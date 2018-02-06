@@ -1,0 +1,26 @@
+﻿<UserControl x:Class="AirlinesManagerGame.Views.AirplanesStatusView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:AirlinesManagerGame.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="500" d:DesignWidth="800">
+    <UserControl.DataContext>
+        <local:AirplanesStatusViewModel/>
+    </UserControl.DataContext>
+    <Grid>
+        <DataGrid x:Name="ListUsersPlanes" AutoGenerateColumns="False" IsReadOnly="True" ItemsSource="{Binding AirplanesList}" HorizontalAlignment="Left" Margin="28,26,0,0" Width="550" Height="420" VerticalAlignment="Top">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Flight #" Binding="{Binding FlightNumber}"/>
+                <DataGridTextColumn Header="Location" Binding="{Binding Location}"/>
+                <DataGridTextColumn Header="Destination" Binding="{Binding Destination}"/>
+                <DataGridTextColumn Header="Capacity" Binding="{Binding Capacity}"/>
+                <DataGridTextColumn Header="ETA"/>
+                <DataGridTextColumn Header="Profit"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button x:Name="ButtonFlyPlane" Content="Fly" HorizontalAlignment="Left" Margin="658,86,0,0" VerticalAlignment="Top" Width="76" IsEnabled="False"/>
+        <Button x:Name="ButtonStore" Content="Store" HorizontalAlignment="Left" Margin="660,154,0,0" VerticalAlignment="Top" Width="74" Click="ButtonStore_Click"/>
+    </Grid>
+</UserControl>
