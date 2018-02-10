@@ -10,12 +10,6 @@ namespace AirlinesManagerGame.Views
         public AirplanesStatusView()
         {
             InitializeComponent();
-            DataContext = viewModel;
-        }
-
-        private void ButtonStore_Click(object sender, RoutedEventArgs e)
-        {
-            
         }
     }
 }

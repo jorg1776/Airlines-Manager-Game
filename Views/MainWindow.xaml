@@ -6,5 +6,19 @@
         xmlns:local="clr-namespace:AirlinesManagerGame.Views"
         mc:Ignorable="d"
         Title="Airlines Manager" Height="500" Width="800">
-    <Grid/>
+    <Window.DataContext>
+        <local:MainWindowViewModel/>
+    </Window.DataContext>
+    <Window.Resources>
+        <DataTemplate DataType="{x:Type local:AirplanesStatusViewModel}">
+            <local:AirplanesStatusView />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type local:StoreViewModel}">
+            <local:StoreView />
+        </DataTemplate>
+    </Window.Resources>
+    
+    <Grid>
+        <ContentControl Content="{Binding CurrentViewModel}" />
+    </Grid>
 </Window>

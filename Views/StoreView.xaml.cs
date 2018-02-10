@@ -1,5 +1,4 @@
-﻿using System.Windows;
-using System.Windows.Controls;
+﻿using System.Windows.Controls;
 
 namespace AirlinesManagerGame.Views
 {
@@ -13,12 +12,6 @@ namespace AirlinesManagerGame.Views
         public StoreView()
         {
             InitializeComponent();
-            DataContext = viewModel;
-        }
-
-        private void ButtonBack_Click(object sender, RoutedEventArgs e)
-        {
-
         }
     }
 }

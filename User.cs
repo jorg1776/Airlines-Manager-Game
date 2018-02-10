@@ -29,13 +29,13 @@ namespace AirlinesManagerGame
         public static void AddPurchasedAirplane(Airplane purchasedAirplane)
         {
             OwnedAirplanes.Add(purchasedAirplane);
-            user.OnAirlaneAdded(new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Add, purchasedAirplane));
+            user.RaiseAirplaneAddedEvent(new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Add, purchasedAirplane));
 
             AvailableAirplaneSlots--;
             Money -= purchasedAirplane.Price;
         }
 
         //Notifies PlaneStatusViewModel.PlanesList that a plane has been added so it can be added to the View
-        private void OnAirlaneAdded(NotifyCollectionChangedEventArgs e) => CollectionChanged?.Invoke(OwnedAirplanes, e);
+        private void RaiseAirplaneAddedEvent(NotifyCollectionChangedEventArgs e) => CollectionChanged?.Invoke(OwnedAirplanes, e);
     }
 }
