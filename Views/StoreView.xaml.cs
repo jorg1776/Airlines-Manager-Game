@@ -1,4 +1,5 @@
-﻿using System.Windows.Controls;
+﻿using AirlinesManagerGame.Views.ViewModels;
+using System.Windows.Controls;
 
 namespace AirlinesManagerGame.Views
 {

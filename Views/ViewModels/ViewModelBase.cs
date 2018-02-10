@@ -1,7 +1,7 @@
 ﻿using GalaSoft.MvvmLight.Messaging;
 using System.ComponentModel;
 
-namespace AirlinesManagerGame.Views
+namespace AirlinesManagerGame.Views.ViewModels
 {
     public class ViewModelBase : INotifyPropertyChanged
     {
