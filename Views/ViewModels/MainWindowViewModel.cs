@@ -1,7 +1,6 @@
-﻿using System;
-using GalaSoft.MvvmLight.Messaging;
+﻿using GalaSoft.MvvmLight.Messaging;
 
-namespace AirlinesManagerGame.Views
+namespace AirlinesManagerGame.Views.ViewModels
 {
     public class MainWindowViewModel : ViewModelBase
     {
@@ -33,7 +32,6 @@ namespace AirlinesManagerGame.Views
             switch(viewName)
             {
                 case "AirplanesStatusView":
-                    Console.WriteLine("Status View");
                     CurrentViewModel = airplanesStatusViewModel;
                     break;
                 case "StoreView":

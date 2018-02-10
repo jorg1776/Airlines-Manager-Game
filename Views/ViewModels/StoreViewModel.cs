@@ -1,7 +1,7 @@
 ﻿using GalaSoft.MvvmLight.Command;
 using System.Collections.ObjectModel;
 
-namespace AirlinesManagerGame.Views
+namespace AirlinesManagerGame.Views.ViewModels
 {
     public class StoreViewModel : ViewModelBase
     {

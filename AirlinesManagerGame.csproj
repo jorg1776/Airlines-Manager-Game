@@ -77,18 +77,16 @@
     <Compile Include="FlightManager.cs" />
     <Compile Include="User.cs" />
     <Compile Include="Store\Store.cs" />
-    <Compile Include="ViewModel\MainViewModel.cs" />
-    <Compile Include="ViewModel\ViewModelLocator.cs" />
     <Compile Include="Views\AirplanesStatusView.xaml.cs">
       <DependentUpon>AirplanesStatusView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\AirplanesStatusViewModel.cs" />
-    <Compile Include="Views\ViewModelBase.cs" />
-    <Compile Include="Views\MainWindowViewModel.cs" />
+    <Compile Include="Views\ViewModels\AirplanesStatusViewModel.cs" />
+    <Compile Include="Views\ViewModels\ViewModelBase.cs" />
+    <Compile Include="Views\ViewModels\MainWindowViewModel.cs" />
     <Compile Include="Views\StoreView.xaml.cs">
       <DependentUpon>StoreView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\StoreViewModel.cs" />
+    <Compile Include="Views\ViewModels\StoreViewModel.cs" />
     <Page Include="Views\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
