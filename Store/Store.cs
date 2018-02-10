@@ -1,4 +1,5 @@
 ﻿using AirlinesManagerGame.Airplanes;
+using System;
 using System.Collections.ObjectModel;
 using System.Linq;
 
@@ -23,12 +24,32 @@ namespace AirlinesManagerGame.Store
             AvailableAirplanes.Add(new Wallaby());
         }
 
-        public static bool CanUserPurchaseAirplane(int planeIndex)
+        public static void TryPurchasingAirplane(Airplane airplane)
         {
-            Airplane airplaneToPurchase = AvailableAirplanes.ElementAt(planeIndex);
+            if(CanUserPurchaseAirplane(airplane))
+            {
+                var purchasedAirplane = CreateNewAirplane(airplane.GetType().Name);
+                PurchaseAirplane(purchasedAirplane);
+            }
+        }
 
-            return IsUserHighEnoughLevel(airplaneToPurchase)
-                    && DoesUserHaveEnoughMoney(airplaneToPurchase)
+        private static Airplane CreateNewAirplane(string name)
+        {
+            switch(name)
+            {
+                case "Bearclaw":
+                    return new Bearclaw();
+                case "Wallaby":
+                    return new Wallaby();
+                default:
+                    throw new Exception();
+            }
+        }
+
+        public static bool CanUserPurchaseAirplane(Airplane airplane)
+        {
+            return IsUserHighEnoughLevel(airplane)
+                    && DoesUserHaveEnoughMoney(airplane)
                     && DoesUserHaveTheCapacity();
         }
 
@@ -38,9 +59,6 @@ namespace AirlinesManagerGame.Store
 
         private static bool DoesUserHaveTheCapacity() { return User.AvailableAirplaneSlots > 0; }
 
-        private static void PurchaseAirplane(int airplaneIndex)
-        {
-            User.AddPurchasedAirplane(AvailableAirplanes.ElementAt(airplaneIndex));
-        }
+        private static void PurchaseAirplane(Airplane airplane) { User.AddPurchasedAirplane(airplane); }
     }
 }

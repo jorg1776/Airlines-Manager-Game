@@ -10,11 +10,14 @@ namespace AirlinesManagerGame.Airplanes
         public string Name { get; protected set; }
         public int Price { get; protected set; }
         public int LevelToUnlockPlane { get; protected set; }
+        public int Class { get; protected set; }
         public int Range { get; protected set; }
         public int Speed { get; protected set; }
-        public int Capacity { get; protected set; }
         public double Weight { get; protected set; }
-        protected LoadTypes loadType;
+        public int Capacity { get; protected set; }
+
+        private LoadTypes _loadType;
+        public string LoadType { get { return _loadType.ToString(); } }
         public int CargoCapacity { get; protected set; }
         public int PassengerCapacity { get; protected set; }
         public List<Passenger> Passengers { get; }
@@ -35,22 +38,20 @@ namespace AirlinesManagerGame.Airplanes
             switch (loadTypeDecider)
             {
                 case 1:
-                    loadType = LoadTypes.PassengerOnly;
+                    _loadType = LoadTypes.PassengerOnly;
                     break;
                 case 2:
-                    loadType = LoadTypes.CargoOnly;
+                    _loadType = LoadTypes.CargoOnly;
                     break;
                 case 3:
-                    loadType = LoadTypes.Mixed;
+                    _loadType = LoadTypes.Mixed;
                     break;
             }
         }
 
-        protected string GetLoadType() { return loadType.ToString(); }
-
         protected void SetCargoAndPassengerCapacities()
         {
-            switch (loadType.ToString())
+            switch (_loadType.ToString())
             {
                 case "PassengerOnly":
                     PassengerCapacity = Capacity;
