@@ -12,7 +12,6 @@ namespace AirlinesManagerGame.Views
         public StoreView()
         {
             InitializeComponent();
-            DataContext = viewModel;
         }
     }
 }
