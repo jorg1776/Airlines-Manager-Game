@@ -10,7 +10,6 @@ namespace AirlinesManagerGame.Views
         public MainWindow()
         {
             InitializeComponent();
-            Content = new AirplanesStatusView();
         }
     }
 }

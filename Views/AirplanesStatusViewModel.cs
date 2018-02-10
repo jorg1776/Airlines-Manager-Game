@@ -1,9 +1,17 @@
-﻿using System.Collections.ObjectModel;
+﻿using GalaSoft.MvvmLight.Command;
+using System.Collections.ObjectModel;
 
 namespace AirlinesManagerGame.Views
 {
-    public class AirplanesStatusViewModel
+    public class AirplanesStatusViewModel : ViewModelBase
     {
         public ObservableCollection<Airplanes.Airplane> AirplanesList => User.OwnedAirplanes;
+
+        public RelayCommand GoToStoreViewCommand { get; private set; }
+        
+        public AirplanesStatusViewModel()
+        {
+            GoToStoreViewCommand = new RelayCommand(() => SendSwitchViewMessage("StoreView"));
+        }
     }
 }
