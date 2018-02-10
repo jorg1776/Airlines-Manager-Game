@@ -1,5 +1,6 @@
 ﻿using System;
 using AirlinesManagerGame.Store;
+using AirlinesManagerGame.Views.ViewModels;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace AirlinesManagerTests.Tests
