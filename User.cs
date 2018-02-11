@@ -24,6 +24,7 @@ namespace AirlinesManagerGame
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
+
         public static int Experience
         {
             get { return _experience; }
@@ -33,6 +34,7 @@ namespace AirlinesManagerGame
                 user.OnPropertyChanged("Experience");
             }
         }
+
         public static int Level
         {
             get { return _level; }
@@ -42,6 +44,7 @@ namespace AirlinesManagerGame
                 user.OnPropertyChanged("Level");
             }
         }
+
         public static int Money
         {
             get { return _money; }
@@ -51,6 +54,7 @@ namespace AirlinesManagerGame
                 user.OnPropertyChanged("Money");
             }
         }
+
         public static int AvailableAirplaneSlots
         {
             get { return _availableAirplaneSlots; }

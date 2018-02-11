@@ -30,10 +30,9 @@ namespace AirlinesManagerGame.Views.ViewModels
             }
         }
 
-        public string UsersMoney
-        {
-            get { return string.Format("${0:n0}", User.Money); }
-        }
+        public string UsersMoney { get { return string.Format("Money: ${0:n0}", User.Money); } }
+
+        public string UsersLevel { get { return string.Format("Level {0}", User.Level); } }
 
         private void SetCurrentView(string viewName)
         {

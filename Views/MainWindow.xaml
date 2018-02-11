@@ -26,6 +26,9 @@
             <StatusBarItem>
                 <Label Content="{Binding UsersMoney}"/>
             </StatusBarItem>
+            <StatusBarItem>
+                <Label Content="{Binding UsersLevel}"/>
+            </StatusBarItem>
         </StatusBar> 
     </Grid>
 </Window>
