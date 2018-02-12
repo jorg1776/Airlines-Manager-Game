@@ -21,6 +21,7 @@
                 <DataGridTextColumn Header="Range" Binding="{Binding Range}"/>
                 <DataGridTextColumn Header="Speed" Binding="{Binding Speed}"/>
                 <DataGridTextColumn Header="Weight" Binding="{Binding Weight}"/>
+                <DataGridTextColumn Header="Level to Unlock" Binding="{Binding LevelToUnlockAirplane}"/>
                 <DataGridTextColumn Header="Price" Binding="{Binding Price}"/>
             </DataGrid.Columns>
         </DataGrid>
