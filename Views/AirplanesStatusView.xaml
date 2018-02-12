@@ -13,7 +13,7 @@
     </UserControl.DataContext>
     
     <Grid>
-        <DataGrid AutoGenerateColumns="False" IsReadOnly="True" ItemsSource="{Binding AirplanesList}" HorizontalAlignment="Left" Margin="30,20,0,0" Width="550" Height="420" VerticalAlignment="Top">
+        <DataGrid AutoGenerateColumns="False" IsReadOnly="True" ItemsSource="{Binding AirplanesList}" HorizontalAlignment="Left" Margin="30,20,0,0" Width="550" Height="399" VerticalAlignment="Top">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Flight #" Binding="{Binding FlightNumber}"/>
                 <DataGridTextColumn Header="Plane Type" Binding="{Binding Name}"/>

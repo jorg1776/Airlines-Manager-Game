@@ -1,4 +1,6 @@
 ﻿using GalaSoft.MvvmLight.Messaging;
+using System;
+using System.ComponentModel;
 
 namespace AirlinesManagerGame.Views.ViewModels
 {
@@ -12,6 +14,7 @@ namespace AirlinesManagerGame.Views.ViewModels
         {
             CurrentViewModel = airplanesStatusViewModel;
             Messenger.Default.Register<string>(this, (viewName) => SetCurrentView(viewName));
+            User.Instance.PropertyChanged += userPropertyChanged;
         }
 
         public ViewModelBase CurrentViewModel
@@ -23,9 +26,13 @@ namespace AirlinesManagerGame.Views.ViewModels
             set
             {
                 _currentViewModel = value;
-                RaisePropertyChanged("CurrentViewModel");
+                OnPropertyChanged("CurrentViewModel");
             }
         }
+
+        public string UsersMoney { get { return string.Format("Money: ${0:n0}", User.Money); } }
+
+        public string UsersLevel { get { return string.Format("Level {0}", User.Level); } }
 
         private void SetCurrentView(string viewName)
         {
@@ -38,6 +45,11 @@ namespace AirlinesManagerGame.Views.ViewModels
                     CurrentViewModel = storeViewModel;
                     break;
             }
+        }
+
+        private void userPropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            OnPropertyChanged("Users" + e.PropertyName);
         }
     }
 }

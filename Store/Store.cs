@@ -26,10 +26,14 @@ namespace AirlinesManagerGame.Store
 
         public static void TryPurchasingAirplane(Airplane airplane)
         {
-            if(CanUserPurchaseAirplane(airplane))
+            if (CanUserPurchaseAirplane(airplane))
             {
                 var purchasedAirplane = CreateNewAirplane(airplane.GetType().Name);
                 PurchaseAirplane(purchasedAirplane);
+            }
+            else
+            {
+                Console.WriteLine("Can't purchase");
             }
         }
 
