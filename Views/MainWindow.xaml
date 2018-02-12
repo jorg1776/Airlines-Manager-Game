@@ -20,7 +20,7 @@
         </DataTemplate>
     </Window.Resources>
 
-    <Grid>
+    <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
         <Grid.RowDefinitions>
             <RowDefinition Height="435*"/>
             <RowDefinition Height="34*"/>
@@ -30,10 +30,10 @@
             <ContentControl Content="{Binding CurrentViewModel}"/>
         </Grid>
         
-        <StatusBar HorizontalAlignment="Left" Grid.Row="1">
+        <StatusBar Grid.Row="1">
             <StatusBar.ItemsPanel>
                 <ItemsPanelTemplate>
-                    <Grid Width="790">
+                    <Grid>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="*"/>
                         </Grid.RowDefinitions>
