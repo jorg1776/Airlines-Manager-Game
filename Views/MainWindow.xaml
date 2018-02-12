@@ -20,15 +20,36 @@
         </DataTemplate>
     </Window.Resources>
 
-    <Grid Margin="0,0,0,33">
-        <ContentControl Content="{Binding CurrentViewModel}" />
-        <StatusBar HorizontalAlignment="Left" Height="34" Margin="0,436,0,-34" VerticalAlignment="Top" Width="792">
-            <StatusBarItem>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="435*"/>
+            <RowDefinition Height="34*"/>
+        </Grid.RowDefinitions>
+        
+        <Grid Grid.Row="0">
+            <ContentControl Content="{Binding CurrentViewModel}"/>
+        </Grid>
+        
+        <StatusBar HorizontalAlignment="Left" Grid.Row="1">
+            <StatusBar.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <Grid Width="790">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width=".25*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                    </Grid>
+                </ItemsPanelTemplate>
+            </StatusBar.ItemsPanel>
+            <StatusBarItem Grid.Column="0">
                 <Label Content="{Binding UsersMoney}"/>
             </StatusBarItem>
-            <StatusBarItem>
+            <StatusBarItem Grid.Column="2">
                 <Label Content="{Binding UsersLevel}"/>
             </StatusBarItem>
-        </StatusBar> 
+        </StatusBar>
     </Grid>
 </Window>
