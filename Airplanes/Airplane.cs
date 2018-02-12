@@ -9,7 +9,7 @@ namespace AirlinesManagerGame.Airplanes
     {
         public string Name { get; protected set; }
         public int Price { get; protected set; }
-        public int LevelToUnlockPlane { get; protected set; }
+        public int LevelToUnlockAirplane { get; protected set; }
         public int Class { get; protected set; }
         public int Range { get; protected set; }
         public int Speed { get; protected set; }

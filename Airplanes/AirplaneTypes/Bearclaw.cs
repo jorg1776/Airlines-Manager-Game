@@ -6,7 +6,7 @@
         {
             Name = "Bearclaw";
             Price = 5000;
-            LevelToUnlockPlane = 1;
+            LevelToUnlockAirplane = 1;
             Class = 1;
             Range = 500;
             Speed = 126;
