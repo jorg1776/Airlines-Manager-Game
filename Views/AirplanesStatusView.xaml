@@ -11,15 +11,6 @@
     <UserControl.DataContext>
         <viewmodels:AirplanesStatusViewModel/>
     </UserControl.DataContext>
-
-    <UserControl.Resources>
-        <Style x:Key="CenterDataGridHeaderStyle" TargetType="DataGridColumnHeader">
-            <Setter Property="HorizontalContentAlignment" Value="Center"/>
-        </Style>
-        <Style x:Key="CellCenterTextStyle" TargetType="TextBlock">
-            <Setter Property="TextBlock.TextAlignment" Value="Center"/>
-        </Style>
-    </UserControl.Resources>
     
     <Grid Width="Auto" Height="Auto">
         <Grid.ColumnDefinitions>
