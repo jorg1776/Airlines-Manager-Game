@@ -12,7 +12,7 @@
     </UserControl.DataContext>
 
     <Grid>
-        <DataGrid AutoGenerateColumns="False" IsReadOnly="True" ItemsSource="{Binding AvailableAirplanesList}" SelectedItem="{Binding SelectedAirplane}" HorizontalAlignment="Left" Height="420" VerticalAlignment="Top" Width="550" Margin="30,20,0,0">
+        <DataGrid AutoGenerateColumns="False" IsReadOnly="True" ItemsSource="{Binding AvailableAirplanesList}" SelectedItem="{Binding SelectedAirplane}" HorizontalAlignment="Left" Height="401" VerticalAlignment="Top" Width="550" Margin="30,20,0,0">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Name" Binding="{Binding Name}"/>
                 <DataGridTextColumn Header="Class" Binding="{Binding Class}"/>
@@ -21,10 +21,11 @@
                 <DataGridTextColumn Header="Range" Binding="{Binding Range}"/>
                 <DataGridTextColumn Header="Speed" Binding="{Binding Speed}"/>
                 <DataGridTextColumn Header="Weight" Binding="{Binding Weight}"/>
+                <DataGridTextColumn Header="Level to Unlock" Binding="{Binding LevelToUnlockAirplane}"/>
                 <DataGridTextColumn Header="Price" Binding="{Binding Price}"/>
             </DataGrid.Columns>
         </DataGrid>
-        <Button Command="{Binding GoBackViewCommand}" Content="Back" HorizontalAlignment="Left" Margin="585,420,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="-0.027,1.3"/>
+        <Button Command="{Binding GoBackViewCommand}" Content="Back" HorizontalAlignment="Left" Margin="585,401,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="-0.027,1.3"/>
         <Button Command="{Binding PurchaseAirplaneCommand}" Content="Purchase" HorizontalAlignment="Left" Margin="585,63,0,0" VerticalAlignment="Top" Width="75"/>
 
     </Grid>

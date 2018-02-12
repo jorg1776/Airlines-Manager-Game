@@ -5,7 +5,7 @@ namespace AirlinesManagerGame.Views.ViewModels
 {
     public class AirplanesStatusViewModel : ViewModelBase
     {
-        public ObservableCollection<Airplanes.Airplane> AirplanesList => User.OwnedAirplanes;
+        public ObservableCollection<Airplanes.Airplane> AirplanesList { get {  return User.OwnedAirplanes; } }
 
         public RelayCommand GoToStoreViewCommand { get; private set; }
         

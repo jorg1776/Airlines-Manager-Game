@@ -26,10 +26,14 @@ namespace AirlinesManagerGame.Store
 
         public static void TryPurchasingAirplane(Airplane airplane)
         {
-            if(CanUserPurchaseAirplane(airplane))
+            if (CanUserPurchaseAirplane(airplane))
             {
                 var purchasedAirplane = CreateNewAirplane(airplane.GetType().Name);
                 PurchaseAirplane(purchasedAirplane);
+            }
+            else
+            {
+                Console.WriteLine("Can't purchase");
             }
         }
 
@@ -53,7 +57,7 @@ namespace AirlinesManagerGame.Store
                     && DoesUserHaveTheCapacity();
         }
 
-        private static bool IsUserHighEnoughLevel(Airplane airplane) { return User.Level >= airplane.LevelToUnlockPlane; }
+        private static bool IsUserHighEnoughLevel(Airplane airplane) { return User.Level >= airplane.LevelToUnlockAirplane; }
         
         private static bool DoesUserHaveEnoughMoney(Airplane airplane) { return User.Money >= airplane.Price; }
 
