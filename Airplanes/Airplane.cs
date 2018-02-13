@@ -39,10 +39,10 @@ namespace AirlinesManagerGame.Airplanes
             switch (loadTypeDecider)
             {
                 case 1:
-                    _loadType = LoadTypes.PassengerOnly;
+                    _loadType = LoadTypes.Passenger;
                     break;
                 case 2:
-                    _loadType = LoadTypes.CargoOnly;
+                    _loadType = LoadTypes.Cargo;
                     break;
                 case 3:
                     _loadType = LoadTypes.Mixed;
@@ -71,8 +71,8 @@ namespace AirlinesManagerGame.Airplanes
 
     public enum LoadTypes
     {
-        PassengerOnly = 1,
-        CargoOnly = 2,
+        Passenger = 1,
+        Cargo = 2,
         Mixed = 3
     }
 }
