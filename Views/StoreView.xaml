@@ -21,14 +21,14 @@
                   ColumnHeaderStyle="{StaticResource CenterDataGridHeaderStyle}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="20,20,20,20" Grid.Column="0">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Name" Binding="{Binding Name}" ElementStyle="{StaticResource CellCenterTextStyle}" Width="*"/>
-                <DataGridTextColumn Header="Class" Binding="{Binding Class}" ElementStyle="{StaticResource CellCenterTextStyle}" Width=".75*"/>
+                <DataGridTextColumn Header="Class" Binding="{Binding Class}" ElementStyle="{StaticResource CellCenterTextStyle}" Width=".55*"/>
                 <DataGridTextColumn Header="Capacity" Binding="{Binding Capacity}" ElementStyle="{StaticResource CellCenterTextStyle}" Width=".85*"/>
                 <DataGridTextColumn Header="Type" Binding="{Binding LoadType}" ElementStyle="{StaticResource CellCenterTextStyle}" Width="*"/>
-                <DataGridTextColumn Header="Range" Binding="{Binding Range}" ElementStyle="{StaticResource CellCenterTextStyle}" Width=".85*"/>
-                <DataGridTextColumn Header="Speed" Binding="{Binding Speed}" ElementStyle="{StaticResource CellCenterTextStyle}" Width="*"/>
-                <DataGridTextColumn Header="Weight" Binding="{Binding Weight}" ElementStyle="{StaticResource CellCenterTextStyle}" Width="*"/>
-                <DataGridTextColumn Header="Lvl Unlock" Binding="{Binding LevelToUnlockAirplane}" ElementStyle="{StaticResource CellCenterTextStyle}" Width="*"/>
-                <DataGridTextColumn Header="Price" Binding="{Binding Price}" ElementStyle="{StaticResource CellCenterTextStyle}" Width="*"/>
+                <DataGridTextColumn Header="Range" Binding="{Binding Range}" ElementStyle="{StaticResource CellCenterTextStyle}" Width=".75*"/>
+                <DataGridTextColumn Header="Speed" Binding="{Binding Speed}" ElementStyle="{StaticResource CellCenterTextStyle}" Width=".75*"/>
+                <DataGridTextColumn Header="Weight" Binding="{Binding Weight}" ElementStyle="{StaticResource CellCenterTextStyle}" Width=".75*"/>
+                <DataGridTextColumn Header="Lvl Unlock" Binding="{Binding LevelToUnlockAirplane}" ElementStyle="{StaticResource CellCenterTextStyle}" Width=".9*"/>
+                <DataGridTextColumn Header="Price" Binding="{Binding PriceAsString}" ElementStyle="{StaticResource CellCenterTextStyle}" Width="1.1*"/>
             </DataGrid.Columns>
         </DataGrid>
         <Button Command="{Binding GoBackViewCommand}" Content="Back" HorizontalAlignment="Left" Margin="10,70,0,0" VerticalAlignment="Top" Width="75" Grid.Column="1"/>
