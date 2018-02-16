@@ -32,7 +32,7 @@ namespace AirlinesManagerGame.Views.ViewModels
             {
                 System.Console.WriteLine("null");
             }
-            else if (airplaneForPurchase != null)
+            else if (airplaneForPurchase != null && Store.Store.CanUserPurchaseAirplane(airplaneForPurchase))
             {
                 purchaseVerificationViewModel.ValidatePurchase(airplaneForPurchase);
             }
