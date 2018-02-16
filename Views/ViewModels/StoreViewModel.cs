@@ -35,7 +35,6 @@ namespace AirlinesManagerGame.Views.ViewModels
             else if (airplaneForPurchase != null)
             {
                 purchaseVerificationViewModel.ValidatePurchase(airplaneForPurchase);
-                
             }
         }
 
