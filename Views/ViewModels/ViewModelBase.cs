@@ -12,7 +12,7 @@ namespace AirlinesManagerGame.Views.ViewModels
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
-        protected static void SendSwitchViewMessage(string viewName)
+        protected void SendSwitchViewMessage(string viewName)
         {
             Messenger.Default.Send(viewName);
         }

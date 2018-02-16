@@ -12,21 +12,27 @@
     </UserControl.DataContext>
 
     <Grid>
-        <DataGrid AutoGenerateColumns="False" IsReadOnly="True" ItemsSource="{Binding AvailableAirplanesList}" SelectedItem="{Binding SelectedAirplane}" HorizontalAlignment="Left" Height="401" VerticalAlignment="Top" Width="550" Margin="30,20,0,0">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+        
+        <DataGrid AutoGenerateColumns="False" IsReadOnly="True" ItemsSource="{Binding AvailableAirplanesList}" SelectedItem="{Binding SelectedAirplane}" 
+                  ColumnHeaderStyle="{StaticResource CenterDataGridHeaderStyle}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="20,20,20,20" Grid.Column="0">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Name" Binding="{Binding Name}"/>
-                <DataGridTextColumn Header="Class" Binding="{Binding Class}"/>
-                <DataGridTextColumn Header="Capacity" Binding="{Binding Capacity}"/>
-                <DataGridTextColumn Header="Type" Binding="{Binding LoadType}"/>
-                <DataGridTextColumn Header="Range" Binding="{Binding Range}"/>
-                <DataGridTextColumn Header="Speed" Binding="{Binding Speed}"/>
-                <DataGridTextColumn Header="Weight" Binding="{Binding Weight}"/>
-                <DataGridTextColumn Header="Level to Unlock" Binding="{Binding LevelToUnlockAirplane}"/>
-                <DataGridTextColumn Header="Price" Binding="{Binding Price}"/>
+                <DataGridTextColumn Header="Name" Binding="{Binding Name}" ElementStyle="{StaticResource CellCenterTextStyle}" Width="*"/>
+                <DataGridTextColumn Header="Class" Binding="{Binding Class}" ElementStyle="{StaticResource CellCenterTextStyle}" Width=".55*"/>
+                <DataGridTextColumn Header="Capacity" Binding="{Binding Capacity}" ElementStyle="{StaticResource CellCenterTextStyle}" Width=".85*"/>
+                <DataGridTextColumn Header="Type" Binding="{Binding LoadType}" ElementStyle="{StaticResource CellCenterTextStyle}" Width="*"/>
+                <DataGridTextColumn Header="Range" Binding="{Binding Range}" ElementStyle="{StaticResource CellCenterTextStyle}" Width=".75*"/>
+                <DataGridTextColumn Header="Speed" Binding="{Binding Speed}" ElementStyle="{StaticResource CellCenterTextStyle}" Width=".75*"/>
+                <DataGridTextColumn Header="Weight" Binding="{Binding Weight}" ElementStyle="{StaticResource CellCenterTextStyle}" Width=".75*"/>
+                <DataGridTextColumn Header="Lvl Unlock" Binding="{Binding LevelToUnlockAirplane}" ElementStyle="{StaticResource CellCenterTextStyle}" Width=".9*"/>
+                <DataGridTextColumn Header="Price" Binding="{Binding PriceAsString}" ElementStyle="{StaticResource CellCenterTextStyle}" Width="1.1*"/>
             </DataGrid.Columns>
         </DataGrid>
-        <Button Command="{Binding GoBackViewCommand}" Content="Back" HorizontalAlignment="Left" Margin="585,401,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="-0.027,1.3"/>
-        <Button Command="{Binding PurchaseAirplaneCommand}" Content="Purchase" HorizontalAlignment="Left" Margin="585,63,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button Command="{Binding GoBackViewCommand}" Content="Back" HorizontalAlignment="Left" Margin="10,70,0,0" VerticalAlignment="Top" Width="75" Grid.Column="1"/>
+        <Button Command="{Binding PurchaseAirplaneCommand}" Content="Purchase" HorizontalAlignment="Left" Margin="10,40,0,0" VerticalAlignment="Top" Width="75" Grid.Column="1"/>
 
     </Grid>
 </UserControl>

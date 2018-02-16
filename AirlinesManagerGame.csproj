@@ -80,13 +80,18 @@
     <Compile Include="Views\AirplanesStatusView.xaml.cs">
       <DependentUpon>AirplanesStatusView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\PurchaseVerificationWindow.xaml.cs">
+      <DependentUpon>PurchaseVerificationWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\ViewModels\AirplanesStatusViewModel.cs" />
+    <Compile Include="Views\ViewModels\PurchaseVerificationViewModel.cs" />
     <Compile Include="Views\ViewModels\ViewModelBase.cs" />
     <Compile Include="Views\ViewModels\MainWindowViewModel.cs" />
     <Compile Include="Views\StoreView.xaml.cs">
       <DependentUpon>StoreView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\ViewModels\StoreViewModel.cs" />
+    <Compile Include="Views\WindowService\WindowService.cs" />
     <Page Include="Views\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -103,6 +108,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Views\AirplanesStatusView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\PurchaseVerificationWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

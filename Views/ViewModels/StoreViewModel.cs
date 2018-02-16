@@ -10,17 +10,40 @@ namespace AirlinesManagerGame.Views.ViewModels
 
         public RelayCommand GoBackViewCommand { get; private set; }
         public RelayCommand PurchaseAirplaneCommand { get; private set; }
+        private PurchaseVerificationViewModel purchaseVerificationViewModel = new PurchaseVerificationViewModel();
 
         public StoreViewModel()
         {
             GoBackViewCommand = new RelayCommand(() => SendSwitchViewMessage("AirplanesStatusView"));
-            PurchaseAirplaneCommand = new RelayCommand(() => Store.Store.TryPurchasingAirplane(SelectedAirplane));
+            PurchaseAirplaneCommand = new RelayCommand(() => VerifyPurchase(SelectedAirplane));
+            purchaseVerificationViewModel.OnDecisionVerified += new PurchaseVerificationViewModel.VerificationEventHandler(PurchaseAirplane);
         }
 
+        private Airplane _selectedAirplane;
         public Airplane SelectedAirplane
         {
-            get;
-            set;
+            get { return _selectedAirplane; }
+            set {  _selectedAirplane = value; }
+        }
+
+        private void VerifyPurchase(Airplane airplaneForPurchase)
+        {
+            if(airplaneForPurchase == null)
+            {
+                System.Console.WriteLine("null");
+            }
+            else if (airplaneForPurchase != null && Store.Store.CanUserPurchaseAirplane(airplaneForPurchase))
+            {
+                purchaseVerificationViewModel.ValidatePurchase(airplaneForPurchase);
+            }
+        }
+
+        private void PurchaseAirplane(object sender, VerificationEventArgs e)
+        {
+            if (e.Decision == true)
+            {
+                Store.Store.TryPurchasingAirplane(SelectedAirplane);
+            }
         }
     }
 }
