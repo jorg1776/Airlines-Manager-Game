@@ -6,7 +6,8 @@
         xmlns:local="clr-namespace:AirlinesManagerGame.Views"
         xmlns:viewmodels="clr-namespace:AirlinesManagerGame.Views.ViewModels"
         mc:Ignorable="d"
-        Title="Airlines Manager" Height="500" Width="800">
+        Title="Airlines Manager" Height="500" Width="800"
+        WindowStartupLocation="CenterScreen">
 
     <Window.DataContext>
         <viewmodels:MainWindowViewModel/>
