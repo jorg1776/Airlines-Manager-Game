@@ -10,5 +10,7 @@
 
     <Grid>
         <Label Content="{Binding VerificationQuestion, UpdateSourceTrigger=PropertyChanged}"/>
+        <Button Content="Yes" Command="{Binding AcceptPurchaseCommand}" HorizontalAlignment="Left" Margin="97,211,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button Content="No" Command="{Binding DeclinePurchaseCommand}" HorizontalAlignment="Left" Margin="195,211,0,0" VerticalAlignment="Top" Width="75"/>
     </Grid>
 </Window>

@@ -1,11 +1,26 @@
 ﻿using System;
 using AirlinesManagerGame.Airplanes;
+using GalaSoft.MvvmLight.Command;
 
 namespace AirlinesManagerGame.Views.ViewModels
 {
     public class PurchaseVerificationViewModel : ViewModelBase
     {
         private WindowService.WindowService windowService = new WindowService.WindowService();
+
+        public RelayCommand AcceptPurchaseCommand { get; private set; }
+        public RelayCommand DeclinePurchaseCommand { get; private set; }
+
+        public PurchaseVerificationViewModel()
+        {
+            AcceptPurchaseCommand = new RelayCommand(() => 
+            {
+                OnDecisionVerified(this, new VerificationEventArgs(true));
+                windowService.CloseWindow();
+            });
+
+            DeclinePurchaseCommand = new RelayCommand(() => windowService.CloseWindow() );
+        }
 
         private string _verificationQuestion = "Question";
         public string VerificationQuestion
@@ -26,11 +41,25 @@ namespace AirlinesManagerGame.Views.ViewModels
             VerificationQuestion = String.Format("Would you like to purchase {0} for {1}?", airplane.Name, airplane.PriceAsString);
         }
 
-        public bool IsPurchaseVerified(Airplane selectedAirplane)
+        public void ValidatePurchase(Airplane selectedAirplane)
         {
             SetVerificationQuestion(selectedAirplane);
             windowService.ShowPurchaseVerificationWindow(this);
-            return false;
         }
+
+        public delegate void VerificationEventHandler(object sender, VerificationEventArgs args);
+        public event VerificationEventHandler OnDecisionVerified;
+    }
+
+    public class VerificationEventArgs : EventArgs
+    {
+        public bool _decision;
+
+        public VerificationEventArgs(bool decision)
+        {
+            _decision = decision;
+        }
+
+        public bool Decision { get { return _decision; } }
     }
 }
