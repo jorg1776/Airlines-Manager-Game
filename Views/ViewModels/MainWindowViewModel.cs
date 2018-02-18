@@ -26,7 +26,7 @@ namespace AirlinesManagerGame.Views.ViewModels
             set
             {
                 _currentViewModel = value;
-                OnPropertyChanged("CurrentViewModel");
+                OnPropertyChanged(nameof(CurrentViewModel));
             }
         }
 
