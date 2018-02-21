@@ -30,7 +30,8 @@
             </DataGrid.Columns>
         </DataGrid>
         
-        <Button Content="Fly" HorizontalAlignment="Left" Margin="0,86,0,0" VerticalAlignment="Top" Width="76" IsEnabled="False" Grid.Column="1"/>
-        <Button Command="{Binding GoToStoreViewCommand}" Content="Store" HorizontalAlignment="Left" Margin="0,154,0,0" VerticalAlignment="Top" Width="74" Grid.Column="1"/>
+        <Button Content="Fly" HorizontalAlignment="Left" Margin="0,100,0,0" VerticalAlignment="Top" Width="76" IsEnabled="False" Grid.Column="1"/>
+        <Button Command="{Binding GoToStoreViewCommand}" Content="Store" HorizontalAlignment="Left" Margin="0,150,0,0" VerticalAlignment="Top" Width="74" Grid.Column="1"/>
+        <Button Command="{Binding GoToMapViewCommand}" Content="Map" HorizontalAlignment="Left" Margin="0,200,0,0" VerticalAlignment="Top" Width="74" Grid.Column="1"/>
     </Grid>
 </UserControl>
