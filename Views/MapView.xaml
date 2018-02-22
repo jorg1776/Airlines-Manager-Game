@@ -13,8 +13,8 @@
     </UserControl.DataContext>
 
     <Grid x:Name="mapGrid">
-        <worldmap:ZoomBorder HorizontalAlignment="Stretch" ClipToBounds="True" Background="#00007f"> <!--00007f-->
-            <Image Source="/Views/WorldMap/WorldMap.png"/>
+        <worldmap:ZoomBorder HorizontalAlignment="Stretch" ClipToBounds="True" Background="#00007f">
+            <Image Source="/Views/WorldMap/WorldMap.jpeg"/>
         </worldmap:ZoomBorder>
     </Grid>
 </UserControl>
