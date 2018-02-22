@@ -74,7 +74,7 @@
     <Compile Include="Airports\Cities\SaltLakeCityAirport.cs" />
     <Compile Include="CargoType\Cargo.cs" />
     <Compile Include="CargoType\Passenger.cs" />
-    <Compile Include="FlightManager.cs" />
+    <Compile Include="FlightManager\FlightManager.cs" />
     <Compile Include="User.cs" />
     <Compile Include="Store\Store.cs" />
     <Compile Include="Views\AirplanesStatusView.xaml.cs">
@@ -159,5 +159,6 @@
   <ItemGroup>
     <Resource Include="Views\WorldMap\WorldMap.jpeg" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

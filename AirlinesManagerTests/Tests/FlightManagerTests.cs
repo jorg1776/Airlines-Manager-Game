@@ -37,11 +37,6 @@ namespace AirlinesManagerTests
             var plane = new Bearclaw();
             SaltLakeCityAirport.Instance.LandPlane(plane);
             Assert.AreEqual(1, SaltLakeCityAirport.Instance.DockedAirplanes.Count);
-
-            FlightManager.FlyPlane(plane, PhoenixAirport.Instance);
-            Assert.AreEqual(0, SaltLakeCityAirport.Instance.DockedAirplanes.Count);
-            Assert.AreEqual(1, PhoenixAirport.Instance.DockedAirplanes.Count);
-            Assert.AreEqual(plane.Location, PhoenixAirport.Instance);
         }
     }
 }
