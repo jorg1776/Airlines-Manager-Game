@@ -157,9 +157,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Views\WorldMap\WorldMap.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Views\WorldMap\WorldMap.jpeg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
