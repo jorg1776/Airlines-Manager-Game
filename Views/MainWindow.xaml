@@ -19,6 +19,9 @@
         <DataTemplate DataType="{x:Type viewmodels:StoreViewModel}">
             <local:StoreView />
         </DataTemplate>
+        <DataTemplate DataType="{x:Type viewmodels:MapViewModel}">
+            <local:MapView />
+        </DataTemplate>
     </Window.Resources>
 
     <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
