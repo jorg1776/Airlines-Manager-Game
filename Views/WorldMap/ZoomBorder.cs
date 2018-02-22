@@ -95,7 +95,7 @@ namespace AirlinesManagerGame.Views.WorldMap
 
 
                 double zoom = 0;
-                if(e.Delta > 0 && st.ScaleX < 3 && st.ScaleY < 3) { zoom = .2; } //prevents zooming in too much
+                if(e.Delta > 0 && st.ScaleX < 6 && st.ScaleY < 6) { zoom = .2; } //prevents zooming in too much
                 else if(e.Delta < 0 && st.ScaleX > 1 && st.ScaleY > 1) { zoom = -.2; } //prevents zooming out too much
 
                 st.ScaleX += zoom;
