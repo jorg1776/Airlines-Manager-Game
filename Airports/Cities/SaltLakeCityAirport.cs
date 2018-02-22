@@ -5,11 +5,10 @@ namespace AirlinesManagerGame.Airports.Cities
     public sealed class SaltLakeCityAirport : Airport
     {
         private static readonly SaltLakeCityAirport slcAirport = new SaltLakeCityAirport();
-        private static string _cityName = "Salt Lake City";
 
         private SaltLakeCityAirport()
         {
-            City = _cityName;
+            Name = "Salt Lake City Airport";
         }
 
         public static SaltLakeCityAirport Instance{ get { return slcAirport; } }

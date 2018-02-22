@@ -6,7 +6,7 @@ namespace AirlinesManagerGame.Airports
 {
     public abstract class Airport
     {
-        public string City { get; protected set; }
+        public string Name { get; protected set; }
         public int Price { get; protected set; }
         public List<Airplane> DockedAirplanes { get; protected set; }
         public List<Passenger> AvailablePassengers { get; }
