@@ -1,4 +1,4 @@
-﻿using AirlinesManagerGame.Airports;
+﻿using AirlinesManagerGame.Models;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;

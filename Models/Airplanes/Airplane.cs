@@ -1,9 +1,7 @@
-﻿using AirlinesManagerGame.Airports;
-using AirlinesManagerGame.CargoType;
-using System;
+﻿using System;
 using System.Collections.Generic;
 
-namespace AirlinesManagerGame.Airplanes
+namespace AirlinesManagerGame.Models
 {
     public abstract class Airplane
     {

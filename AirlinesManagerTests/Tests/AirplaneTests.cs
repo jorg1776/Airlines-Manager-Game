@@ -1,5 +1,5 @@
 ﻿using System;
-using AirlinesManagerGame.Airplanes;
+using AirlinesManagerGame.Models;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 

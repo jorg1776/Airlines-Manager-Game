@@ -1,12 +1,14 @@
-﻿using System.Windows;
+﻿using AirlinesManagerGame.Views;
+using AirlinesManagerGame.ViewModels;
+using System.Windows;
 
-namespace AirlinesManagerGame.Views.WindowService
+namespace AirlinesManagerGame.Services
 {
     public class WindowService
     {
         private Window win;
 
-        public void ShowPurchaseVerificationWindow(ViewModels.PurchaseVerificationViewModel viewModel)
+        public void ShowPurchaseVerificationWindow(PurchaseVerificationViewModel viewModel)
         {
             win = new PurchaseVerificationWindow(viewModel);
             win.Show();

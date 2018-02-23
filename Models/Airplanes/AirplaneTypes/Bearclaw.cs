@@ -1,4 +1,4 @@
-﻿namespace AirlinesManagerGame.Airplanes
+﻿namespace AirlinesManagerGame.Models
 {
     public class Bearclaw : Airplane
     {

@@ -2,7 +2,7 @@
 using System.Collections.Specialized;
 using System.ComponentModel;
 
-namespace AirlinesManagerGame.Views.ViewModels
+namespace AirlinesManagerGame.ViewModels
 {
     public class ViewModelBase : INotifyPropertyChanged, INotifyCollectionChanged
     {

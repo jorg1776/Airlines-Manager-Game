@@ -1,6 +1,4 @@
-﻿using System;
-using AirlinesManagerGame;
-using AirlinesManagerGame.Airplanes;
+﻿using AirlinesManagerGame.Models;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace AirlinesManagerTests.Tests

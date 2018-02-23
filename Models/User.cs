@@ -1,7 +1,6 @@
-﻿using AirlinesManagerGame.Airplanes;
-using System.Collections.ObjectModel;
-using System.Collections.Specialized;
-namespace AirlinesManagerGame
+﻿using System.Collections.ObjectModel;
+
+namespace AirlinesManagerGame.Models
 {
     public sealed class User
     {

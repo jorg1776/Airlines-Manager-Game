@@ -1,10 +1,10 @@
-﻿using AirlinesManagerGame.Airplanes;
+﻿using AirlinesManagerGame.Models;
 using GalaSoft.MvvmLight.Messaging;
-using AirlinesManagerGame.Mediators;
+using AirlinesManagerGame.Sevices.Mediators;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 
-namespace AirlinesManagerGame.Views.ViewModels
+namespace AirlinesManagerGame.ViewModels
 {
     public class MainWindowViewModel : ViewModelBase
     {

@@ -1,11 +1,12 @@
-﻿using GalaSoft.MvvmLight.Command;
+﻿using AirlinesManagerGame.Models;
+using GalaSoft.MvvmLight.Command;
 using System.Collections.ObjectModel;
 
-namespace AirlinesManagerGame.Views.ViewModels
+namespace AirlinesManagerGame.ViewModels
 {
     public class AirplanesStatusViewModel : ViewModelBase
     {
-        public ObservableCollection<Airplanes.Airplane> AirplanesList { get {  return User.OwnedAirplanes; } }
+        public ObservableCollection<Airplane> AirplanesList { get {  return User.OwnedAirplanes; } }
 
         public RelayCommand GoToStoreViewCommand { get; private set; }
         public RelayCommand GoToMapViewCommand { get; private set; }

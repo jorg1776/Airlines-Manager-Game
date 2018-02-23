@@ -1,13 +1,14 @@
-﻿using AirlinesManagerGame.Airplanes;
+﻿using AirlinesManagerGame.Models;
+using AirlinesManagerGame.Sevices.Mediators;
 using GalaSoft.MvvmLight.Command;
 using System;
 using System.Collections.ObjectModel;
 
-namespace AirlinesManagerGame.Views.ViewModels
+namespace AirlinesManagerGame.ViewModels
 {
     public class StoreViewModel : ViewModelBase
     {
-        public ObservableCollection<Airplane> AvailableAirplanesList { get { return Store.Store.AvailableAirplanes; } }
+        public ObservableCollection<Airplane> AvailableAirplanesList { get { return Models.Store.AvailableAirplanes; } }
 
         public RelayCommand GoBackViewCommand { get; private set; }
         public RelayCommand PurchaseAirplaneCommand { get; private set; }
@@ -43,7 +44,7 @@ namespace AirlinesManagerGame.Views.ViewModels
             if (e.Decision == true)
             {
                 var purchasedAirplane = CreateNewAirplane(SelectedAirplane.GetType().Name);
-                Mediators.StoreMainMediator.AddAirplane(this, purchasedAirplane);
+                StoreMainMediator.AddAirplane(this, purchasedAirplane);
             }
         }
 

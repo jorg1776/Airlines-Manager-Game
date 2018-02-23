@@ -1,5 +1,5 @@
 ﻿
-namespace AirlinesManagerGame.CargoType
+namespace AirlinesManagerGame.Models
 {
     public class Passenger
     {

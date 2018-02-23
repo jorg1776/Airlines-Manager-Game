@@ -1,5 +1,5 @@
 ﻿
-namespace AirlinesManagerGame.Views.ViewModels
+namespace AirlinesManagerGame.ViewModels
 {
     public class MapViewModel :  ViewModelBase
     {

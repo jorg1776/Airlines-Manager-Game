@@ -1,7 +1,7 @@
 ﻿using System;
-using AirlinesManagerGame.Airplanes;
+using AirlinesManagerGame.Models;
 
-namespace AirlinesManagerGame.Mediators
+namespace AirlinesManagerGame.Sevices.Mediators
 {
     public class StoreMainMediator
     {

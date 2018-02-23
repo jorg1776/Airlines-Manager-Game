@@ -1,4 +1,4 @@
-﻿using AirlinesManagerGame.Airplanes;
+﻿using AirlinesManagerGame.Models;
 
 namespace AirlinesManagerGame.Airports.Cities
 {
