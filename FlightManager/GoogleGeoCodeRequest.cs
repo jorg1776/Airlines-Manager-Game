@@ -1,12 +1,9 @@
 ﻿using AirlinesManagerGame.Airports;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Net;
-using System.Net.Http;
-using System.Xaml;
 using System.Device.Location;
 
 namespace AirlinesManagerGame.FlightManager
