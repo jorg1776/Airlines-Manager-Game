@@ -1,6 +1,10 @@
-﻿using GalaSoft.MvvmLight.Messaging;
+﻿using AirlinesManagerGame.Airplanes;
+using GalaSoft.MvvmLight.Messaging;
 using System;
 using System.ComponentModel;
+using AirlinesManagerGame.Mediators;
+using System.Collections.ObjectModel;
+using System.Collections.Specialized;
 
 namespace AirlinesManagerGame.Views.ViewModels
 {
@@ -11,11 +15,13 @@ namespace AirlinesManagerGame.Views.ViewModels
         private static readonly StoreViewModel storeViewModel = new StoreViewModel();
         private static readonly MapViewModel mapViewModel = new MapViewModel();
 
+        public ObservableCollection<Airplane> OwnedAirplanes { get { return User.OwnedAirplanes; } }
+
         public MainWindowViewModel()
         {
             CurrentViewModel = airplanesStatusViewModel;
             Messenger.Default.Register<string>(this, (viewName) => SetCurrentView(viewName));
-            User.Instance.PropertyChanged += userPropertyChanged;
+            StoreMainMediator.OnAirplanePurchased += new StoreMainMediator.AirplanePurchasedEventHandler(AddPurchasedAirplane);
         }
 
         public ViewModelBase CurrentViewModel
@@ -31,9 +37,25 @@ namespace AirlinesManagerGame.Views.ViewModels
             }
         }
 
-        public string UsersMoney { get { return string.Format("Money: ${0:n0}", User.Money); } }
+        public string UsersMoneyAsString { get { return string.Format("Money: ${0:n0}", UsersMoney); } }
+        public int UsersMoney
+        {
+            get { return User.Money; }
+            set { User.Money = value; OnPropertyChanged(nameof(UsersMoneyAsString)); }
+        }
 
-        public string UsersLevel { get { return string.Format("Level {0}", User.Level); } }
+        public string UsersLevelString {  get { return string.Format("Level {0}", UsersLevel); } }
+        public int UsersLevel
+        {
+            get { return User.Level; }
+            set { User.Level = value; }
+        }
+
+        public static int UsersAvailableAirplaneSlots
+        {
+            get { return User.AvailableAirplaneSlots; }
+            set { User.AvailableAirplaneSlots = value; }
+        }
 
         private void SetCurrentView(string viewName)
         {
@@ -51,9 +73,14 @@ namespace AirlinesManagerGame.Views.ViewModels
             }
         }
 
-        private void userPropertyChanged(object sender, PropertyChangedEventArgs e)
+        public void AddPurchasedAirplane(object sender, StoreMainMediator.AirplanePurchasedEventArgs e)
         {
-            OnPropertyChanged("Users" + e.PropertyName);
+            var purchasedAirplane = e.PurchasedAirplane;
+            OwnedAirplanes.Add(purchasedAirplane);
+            OnCollectionChanged(new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Add, purchasedAirplane));
+
+            UsersAvailableAirplaneSlots--;
+            UsersMoney -= purchasedAirplane.Price;
         }
     }
 }

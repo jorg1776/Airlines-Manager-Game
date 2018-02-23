@@ -49,10 +49,10 @@
                 </ItemsPanelTemplate>
             </StatusBar.ItemsPanel>
             <StatusBarItem Grid.Column="0">
-                <Label Content="{Binding UsersMoney}"/>
+                <Label Content="{Binding UsersMoneyAsString}"/>
             </StatusBarItem>
             <StatusBarItem Grid.Column="2">
-                <Label Content="{Binding UsersLevel}"/>
+                <Label Content="{Binding UsersLevelString}"/>
             </StatusBarItem>
         </StatusBar>
     </Grid>

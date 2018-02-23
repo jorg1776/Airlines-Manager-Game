@@ -43,7 +43,7 @@ namespace AirlinesManagerGame.Views.ViewModels
             if (e.Decision == true)
             {
                 var purchasedAirplane = CreateNewAirplane(SelectedAirplane.GetType().Name);
-                PurchaseAirplane(purchasedAirplane);
+                Mediators.StoreMainMediator.AddAirplane(this, purchasedAirplane);
             }
         }
 
@@ -69,10 +69,8 @@ namespace AirlinesManagerGame.Views.ViewModels
 
         private bool IsUserHighEnoughLevel(Airplane airplane) { return User.Level >= airplane.LevelToUnlockAirplane; }
 
-        private static bool DoesUserHaveEnoughMoney(Airplane airplane) { return User.Money >= airplane.Price; }
+        private bool DoesUserHaveEnoughMoney(Airplane airplane) { return User.Money >= airplane.Price; }
 
-        private static bool DoesUserHaveTheCapacity() { return User.AvailableAirplaneSlots > 0; }
-
-        private static void PurchaseAirplane(Airplane airplane) { User.AddPurchasedAirplane(airplane); }
+        private bool DoesUserHaveTheCapacity() { return User.AvailableAirplaneSlots > 0; }
     }
 }
