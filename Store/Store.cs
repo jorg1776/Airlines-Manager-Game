@@ -23,46 +23,5 @@ namespace AirlinesManagerGame.Store
             AvailableAirplanes.Add(new Bearclaw());
             AvailableAirplanes.Add(new Wallaby());
         }
-
-        public static void TryPurchasingAirplane(Airplane airplane)
-        {
-            if (CanUserPurchaseAirplane(airplane))
-            {
-                var purchasedAirplane = CreateNewAirplane(airplane.GetType().Name);
-                PurchaseAirplane(purchasedAirplane);
-            }
-            else
-            {
-                Console.WriteLine("Can't purchase");
-            }
-        }
-
-        private static Airplane CreateNewAirplane(string name)
-        {
-            switch(name)
-            {
-                case "Bearclaw":
-                    return new Bearclaw();
-                case "Wallaby":
-                    return new Wallaby();
-                default:
-                    throw new Exception();
-            }
-        }
-
-        public static bool CanUserPurchaseAirplane(Airplane airplane)
-        {
-            return IsUserHighEnoughLevel(airplane)
-                    && DoesUserHaveEnoughMoney(airplane)
-                    && DoesUserHaveTheCapacity();
-        }
-
-        private static bool IsUserHighEnoughLevel(Airplane airplane) { return User.Level >= airplane.LevelToUnlockAirplane; }
-        
-        private static bool DoesUserHaveEnoughMoney(Airplane airplane) { return User.Money >= airplane.Price; }
-
-        private static bool DoesUserHaveTheCapacity() { return User.AvailableAirplaneSlots > 0; }
-
-        private static void PurchaseAirplane(Airplane airplane) { User.AddPurchasedAirplane(airplane); }
     }
 }

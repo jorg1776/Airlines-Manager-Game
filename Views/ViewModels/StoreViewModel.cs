@@ -1,5 +1,6 @@
 ﻿using AirlinesManagerGame.Airplanes;
 using GalaSoft.MvvmLight.Command;
+using System;
 using System.Collections.ObjectModel;
 
 namespace AirlinesManagerGame.Views.ViewModels
@@ -19,22 +20,21 @@ namespace AirlinesManagerGame.Views.ViewModels
             purchaseVerificationViewModel.OnDecisionVerified += new PurchaseVerificationViewModel.VerificationEventHandler(PurchaseAirplane);
         }
 
-        private Airplane _selectedAirplane;
-        public Airplane SelectedAirplane
-        {
-            get { return _selectedAirplane; }
-            set {  _selectedAirplane = value; }
-        }
+        public Airplane SelectedAirplane { get; set; }
 
         private void VerifyPurchase(Airplane airplaneForPurchase)
         {
             if(airplaneForPurchase == null)
             {
-                System.Console.WriteLine("null");
+                Console.WriteLine("null");
             }
-            else if (airplaneForPurchase != null && Store.Store.CanUserPurchaseAirplane(airplaneForPurchase))
+            else if (airplaneForPurchase != null && CanUserPurchaseAirplane(airplaneForPurchase))
             {
                 purchaseVerificationViewModel.ValidatePurchase(airplaneForPurchase);
+            }
+            else
+            {
+                Console.WriteLine("Can't purchase");
             }
         }
 
@@ -42,8 +42,37 @@ namespace AirlinesManagerGame.Views.ViewModels
         {
             if (e.Decision == true)
             {
-                Store.Store.TryPurchasingAirplane(SelectedAirplane);
+                var purchasedAirplane = CreateNewAirplane(SelectedAirplane.GetType().Name);
+                PurchaseAirplane(purchasedAirplane);
             }
         }
+
+        private Airplane CreateNewAirplane(string name)
+        {
+            switch (name)
+            {
+                case "Bearclaw":
+                    return new Bearclaw();
+                case "Wallaby":
+                    return new Wallaby();
+                default:
+                    throw new Exception();
+            }
+        }
+
+        public bool CanUserPurchaseAirplane(Airplane airplane)
+        {
+            return IsUserHighEnoughLevel(airplane)
+                    && DoesUserHaveEnoughMoney(airplane)
+                    && DoesUserHaveTheCapacity();
+        }
+
+        private bool IsUserHighEnoughLevel(Airplane airplane) { return User.Level >= airplane.LevelToUnlockAirplane; }
+
+        private static bool DoesUserHaveEnoughMoney(Airplane airplane) { return User.Money >= airplane.Price; }
+
+        private static bool DoesUserHaveTheCapacity() { return User.AvailableAirplaneSlots > 0; }
+
+        private static void PurchaseAirplane(Airplane airplane) { User.AddPurchasedAirplane(airplane); }
     }
 }
