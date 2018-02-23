@@ -37,11 +37,21 @@ namespace AirlinesManagerTests
             var plane = new Bearclaw();
             SaltLakeCityAirport.Instance.LandPlane(plane);
             Assert.AreEqual(1, SaltLakeCityAirport.Instance.DockedAirplanes.Count);
+        }
 
-            FlightManager.FlyPlane(plane, PhoenixAirport.Instance);
-            Assert.AreEqual(0, SaltLakeCityAirport.Instance.DockedAirplanes.Count);
-            Assert.AreEqual(1, PhoenixAirport.Instance.DockedAirplanes.Count);
-            Assert.AreEqual(plane.Location, PhoenixAirport.Instance);
+        [TestMethod]
+        public void AirportNameToURLFormatTest()
+        {
+            var airportName = SaltLakeCityAirport.Instance.Name;
+            Assert.AreEqual("Salt+Lake+City+Airport", airportName.Replace(' ', '+'));
+        }
+
+        [TestMethod]
+        public void DistanceCalculator()
+        {
+            int distance = AirlinesManagerGame.FlightManager.GoogleGeoCodeRequest.GetDistance(SaltLakeCityAirport.Instance, PhoenixAirport.Instance);
+
+            Assert.AreEqual(508, distance);
         }
     }
 }
