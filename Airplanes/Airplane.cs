@@ -16,14 +16,13 @@ namespace AirlinesManagerGame.Airplanes
         public int Speed { get; protected set; }
         public double Weight { get; protected set; }
         public int Capacity { get; protected set; }
-
         private LoadTypes _loadType;
         public string LoadType { get { return _loadType.ToString(); } }
         public int CargoCapacity { get; protected set; }
         public int PassengerCapacity { get; protected set; }
+
         public List<Passenger> Passengers { get; }
         public List<Cargo> Cargo { get; }
-
         public Airport Location { get; set; }
 
         public Airplane()
