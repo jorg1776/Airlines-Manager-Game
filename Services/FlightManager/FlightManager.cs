@@ -1,7 +1,7 @@
-﻿using AirlinesManagerGame.Airplanes;
+﻿using AirlinesManagerGame.Models;
 using AirlinesManagerGame.Airports;
 
-namespace AirlinesManagerGame.FlightManager
+namespace AirlinesManagerGame.Sevices
 {
     public class FlightManager
     {

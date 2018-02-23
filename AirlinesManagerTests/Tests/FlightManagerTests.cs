@@ -1,7 +1,4 @@
-﻿using System;
-using AirlinesManagerGame;
-using AirlinesManagerGame.Airplanes;
-using AirlinesManagerGame.Airports;
+﻿using AirlinesManagerGame.Models;
 using AirlinesManagerGame.Airports.Cities;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 

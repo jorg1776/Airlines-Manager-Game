@@ -1,5 +1,4 @@
-﻿using AirlinesManagerGame.Views.ViewModels;
-using System.Windows.Controls;
+﻿using System.Windows.Controls;
 
 namespace AirlinesManagerGame.Views
 {
@@ -8,8 +7,6 @@ namespace AirlinesManagerGame.Views
     /// </summary>
     public partial class StoreView : UserControl
     {
-        private readonly StoreViewModel viewModel = new StoreViewModel();
-
         public StoreView()
         {
             InitializeComponent();

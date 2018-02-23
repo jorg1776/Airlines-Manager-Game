@@ -1,12 +1,13 @@
 ﻿using System;
-using AirlinesManagerGame.Airplanes;
+using AirlinesManagerGame.Models;
+using AirlinesManagerGame.Services;
 using GalaSoft.MvvmLight.Command;
 
-namespace AirlinesManagerGame.Views.ViewModels
+namespace AirlinesManagerGame.ViewModels
 {
     public class PurchaseVerificationViewModel : ViewModelBase
     {
-        private WindowService.WindowService windowService = new WindowService.WindowService();
+        private WindowService windowService = new WindowService();
 
         public RelayCommand AcceptPurchaseCommand { get; private set; }
         public RelayCommand DeclinePurchaseCommand { get; private set; }

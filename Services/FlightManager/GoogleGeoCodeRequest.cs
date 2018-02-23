@@ -1,4 +1,4 @@
-﻿using AirlinesManagerGame.Airports;
+﻿using AirlinesManagerGame.Models;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -58,9 +58,9 @@ namespace AirlinesManagerGame.FlightManager
                     return reader.ReadToEnd();
                 }
             }
-            catch (WebException ex)
+            catch (WebException)
             {
-                System.Console.WriteLine("Could not get Json from Google Maps Geocode API");
+                Console.WriteLine("Could not get Json from Google Maps Geocode API");
                 return "";
             }
             

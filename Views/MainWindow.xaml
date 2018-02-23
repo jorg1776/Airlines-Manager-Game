@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AirlinesManagerGame.Views"
-        xmlns:viewmodels="clr-namespace:AirlinesManagerGame.Views.ViewModels"
+        xmlns:viewmodels="clr-namespace:AirlinesManagerGame.ViewModels"
         mc:Ignorable="d"
         Title="Airlines Manager" Height="500" Width="800"
         WindowStartupLocation="CenterScreen">
@@ -49,10 +49,10 @@
                 </ItemsPanelTemplate>
             </StatusBar.ItemsPanel>
             <StatusBarItem Grid.Column="0">
-                <Label Content="{Binding UsersMoney}"/>
+                <Label Content="{Binding UsersMoneyAsString}"/>
             </StatusBarItem>
             <StatusBarItem Grid.Column="2">
-                <Label Content="{Binding UsersLevel}"/>
+                <Label Content="{Binding UsersLevelString}"/>
             </StatusBarItem>
         </StatusBar>
     </Grid>
