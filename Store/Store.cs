@@ -1,7 +1,5 @@
 ﻿using AirlinesManagerGame.Airplanes;
-using System;
 using System.Collections.ObjectModel;
-using System.Linq;
 
 namespace AirlinesManagerGame.Store
 {

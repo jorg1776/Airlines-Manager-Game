@@ -1,7 +1,5 @@
 ﻿using AirlinesManagerGame.Airplanes;
 using GalaSoft.MvvmLight.Messaging;
-using System;
-using System.ComponentModel;
 using AirlinesManagerGame.Mediators;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
