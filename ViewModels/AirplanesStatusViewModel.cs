@@ -6,8 +6,6 @@ namespace AirlinesManagerGame.ViewModels
 {
     public class AirplanesStatusViewModel : ViewModelBase
     {
-        public ObservableCollection<Airplane> AirplanesList { get {  return User.OwnedAirplanes; } }
-
         public RelayCommand GoToStoreViewCommand { get; private set; }
         public RelayCommand GoToMapViewCommand { get; private set; }
 
@@ -16,5 +14,9 @@ namespace AirlinesManagerGame.ViewModels
             GoToStoreViewCommand = new RelayCommand(() => SendSwitchViewMessage("StoreView"));
             GoToMapViewCommand = new RelayCommand(() => SendSwitchViewMessage("MapView"));
         }
+
+        public ObservableCollection<Airplane> AirplanesList { get { return User.OwnedAirplanes; } }
+
+        public Airplane SelectedAirplane { get; set; }
     }
 }
