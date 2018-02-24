@@ -13,13 +13,10 @@ namespace AirlinesManagerGame.ViewModels
         private static readonly StoreViewModel storeViewModel = new StoreViewModel();
         private static readonly MapViewModel mapViewModel = new MapViewModel();
 
-        public ObservableCollection<Airplane> OwnedAirplanes { get { return User.OwnedAirplanes; } }
-
         public MainWindowViewModel()
         {
             CurrentViewModel = airplanesStatusViewModel;
             Messenger.Default.Register<string>(this, (viewName) => SetCurrentView(viewName));
-            StoreMainMediator.OnAirplanePurchased += new StoreMainMediator.AirplanePurchasedEventHandler(AddPurchasedAirplane);
         }
 
         public ViewModelBase CurrentViewModel
@@ -49,12 +46,6 @@ namespace AirlinesManagerGame.ViewModels
             set { User.Level = value; }
         }
 
-        public static int UsersAvailableAirplaneSlots
-        {
-            get { return User.AvailableAirplaneSlots; }
-            set { User.AvailableAirplaneSlots = value; }
-        }
-
         private void SetCurrentView(string viewName)
         {
             switch(viewName)
@@ -69,16 +60,6 @@ namespace AirlinesManagerGame.ViewModels
                     CurrentViewModel = mapViewModel;
                     break;
             }
-        }
-
-        public void AddPurchasedAirplane(object sender, StoreMainMediator.AirplanePurchasedEventArgs e)
-        {
-            var purchasedAirplane = e.PurchasedAirplane;
-            OwnedAirplanes.Add(purchasedAirplane);
-            OnCollectionChanged(new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Add, purchasedAirplane));
-
-            UsersAvailableAirplaneSlots--;
-            UsersMoney -= purchasedAirplane.Price;
         }
     }
 }
