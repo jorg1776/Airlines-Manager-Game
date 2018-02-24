@@ -3,7 +3,7 @@ using AirlinesManagerGame.Models;
 
 namespace AirlinesManagerGame.Sevices.Mediators
 {
-    public class StoreAirplanesStatusMediator
+    public class AirplanePurchaseMediator
     {
         public delegate void AirplanePurchasedEventHandler(object sender, AirplanePurchasedEventArgs e);
         public static event AirplanePurchasedEventHandler OnAirplanePurchased;

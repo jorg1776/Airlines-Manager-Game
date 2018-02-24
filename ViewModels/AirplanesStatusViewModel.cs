@@ -17,7 +17,8 @@ namespace AirlinesManagerGame.ViewModels
             //LoadPlaneCommand = new RelayCommand();
             GoToStoreViewCommand = new RelayCommand(() => SendSwitchViewMessage("StoreView"));
             GoToMapViewCommand = new RelayCommand(() => SendSwitchViewMessage("MapView"));
-            StoreAirplanesStatusMediator.OnAirplanePurchased += new StoreAirplanesStatusMediator.AirplanePurchasedEventHandler(AddPurchasedAirplane);
+            
+            AirplanePurchaseMediator.OnAirplanePurchased += new AirplanePurchaseMediator.AirplanePurchasedEventHandler(AddPurchasedAirplane);
         }
 
         public ObservableCollection<Airplane> AirplanesList { get { return User.OwnedAirplanes; } }
@@ -30,14 +31,13 @@ namespace AirlinesManagerGame.ViewModels
             set { User.AvailableAirplaneSlots = value; }
         }
 
-        public void AddPurchasedAirplane(object sender, StoreAirplanesStatusMediator.AirplanePurchasedEventArgs e)
+        public void AddPurchasedAirplane(object sender, AirplanePurchaseMediator.AirplanePurchasedEventArgs e)
         {
             var purchasedAirplane = e.PurchasedAirplane;
             AirplanesList.Add(purchasedAirplane);
             OnCollectionChanged(new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Add, purchasedAirplane));
 
             UsersAvailableAirplaneSlots--;
-            UsersMoney -= purchasedAirplane.Price;
         }
     }
 }

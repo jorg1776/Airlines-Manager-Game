@@ -44,7 +44,7 @@ namespace AirlinesManagerGame.ViewModels
             if (e.Decision == true)
             {
                 var purchasedAirplane = CreateNewAirplane(SelectedAirplane.GetType().Name);
-                StoreAirplanesStatusMediator.AddAirplane(this, purchasedAirplane);
+                AirplanePurchaseMediator.AddAirplane(this, purchasedAirplane);
             }
         }
 
