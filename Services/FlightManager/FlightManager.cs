@@ -7,7 +7,7 @@ namespace AirlinesManagerGame.Sevices
         public static void FlyPlane (Airplane airplane, Airport destination)
         {
             SendPlane(airplane, airplane.Location, destination);
-            Landplane(airplane, destination);
+            LandPlane(airplane, destination);
         }
 
         private static void SendPlane(Airplane airplane, Airport origin, Airport destination)
@@ -16,9 +16,11 @@ namespace AirlinesManagerGame.Sevices
             airplane.Destination = destination;
         }
 
-        private static void Landplane(Airplane airplane, Airport destination)
+        private static void LandPlane(Airplane airplane, Airport destination)
         {
             destination.DockedAirplanes.Add(airplane);
+            airplane.Location = destination;
+            airplane.Destination = null;
         }
     }
 }
