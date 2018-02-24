@@ -14,12 +14,5 @@ namespace AirlinesManagerGame.Models
         {
             DockedAirplanes = new List<Airplane>();
         }
-
-        public void SendPlane(Airplane airplane)
-        {
-            DockedAirplanes.Remove(airplane);
-        }
-
-        public abstract void LandPlane(Airplane airplane);
     }
 }

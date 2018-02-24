@@ -12,11 +12,5 @@ namespace AirlinesManagerGame.Airports.Cities
         }
 
         public static PhoenixAirport Instance { get { return phxAirport; } }
-
-        public override void LandPlane(Airplane airplane)
-        {
-            DockedAirplanes.Add(airplane);
-            airplane.Location = phxAirport;
-        }
     }
 }

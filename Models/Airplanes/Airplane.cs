@@ -22,6 +22,7 @@ namespace AirlinesManagerGame.Models
         public List<Passenger> Passengers { get; }
         public List<Cargo> Cargo { get; }
         public Airport Location { get; set; }
+        public Airport Destination { get; set; }
 
         public Airplane()
         {

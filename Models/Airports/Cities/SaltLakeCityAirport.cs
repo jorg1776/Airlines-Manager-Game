@@ -12,11 +12,5 @@ namespace AirlinesManagerGame.Airports.Cities
         }
 
         public static SaltLakeCityAirport Instance{ get { return slcAirport; } }
-
-        public override void LandPlane(Airplane airplane)
-        {
-            DockedAirplanes.Add(airplane);
-            airplane.Location = Instance;
-        }
     }
 }
