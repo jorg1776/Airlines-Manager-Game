@@ -80,7 +80,7 @@
     <Compile Include="Models\CargoType\Passenger.cs" />
     <Compile Include="Services\FlightManager\FlightManager.cs" />
     <Compile Include="Services\FlightManager\GoogleGeoCodeRequest.cs" />
-    <Compile Include="Services\Mediators\StoreMainMediator.cs" />
+    <Compile Include="Services\Mediators\AirplanePurchaseMediator.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Models\Store.cs" />
     <Compile Include="Views\AirplanesStatusView.xaml.cs">

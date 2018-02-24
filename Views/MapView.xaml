@@ -8,10 +8,6 @@
              mc:Ignorable="d" 
              d:DesignHeight="500" d:DesignWidth="800">
     
-    <UserControl.DataContext>
-        <viewmodels:MapViewModel/>
-    </UserControl.DataContext>
-
     <Grid x:Name="mapGrid">
         <worldmap:ZoomBorder HorizontalAlignment="Stretch" ClipToBounds="True" Background="#00007f">
             <Image Source="/Views/WorldMap/WorldMap.jpeg"/>
