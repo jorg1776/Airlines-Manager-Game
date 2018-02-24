@@ -1,6 +1,8 @@
 ﻿using AirlinesManagerGame.Models;
 using AirlinesManagerGame.Airports.Cities;
+using AirlinesManagerGame.Sevices;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+
 
 namespace AirlinesManagerTests
 {
@@ -8,32 +10,15 @@ namespace AirlinesManagerTests
     public class FlightManagerTests
     {
         [TestMethod]
-        public void FlightLandingTest()
+        public void FlyPlaneTest()
         {
             var plane = new Bearclaw();
-            SaltLakeCityAirport.Instance.LandPlane(plane);
+            plane.Location = SaltLakeCityAirport.Instance;
+            var destination = PhoenixAirport.Instance;
 
-            Assert.AreEqual(plane.Location, SaltLakeCityAirport.Instance);
-            Assert.AreEqual(1, SaltLakeCityAirport.Instance.DockedAirplanes.Count);
-        }
+            FlightManager.FlyPlane(plane, destination);
 
-        [TestMethod]
-        public void FlightSendingTest()
-        {
-            var plane = new Bearclaw();
-            SaltLakeCityAirport.Instance.LandPlane(plane);
-            Assert.AreEqual(1, SaltLakeCityAirport.Instance.DockedAirplanes.Count);
-
-            SaltLakeCityAirport.Instance.SendPlane(plane);
-            Assert.AreEqual(0, SaltLakeCityAirport.Instance.DockedAirplanes.Count);
-        }
-
-        [TestMethod]
-        public void FlyTest()
-        {
-            var plane = new Bearclaw();
-            SaltLakeCityAirport.Instance.LandPlane(plane);
-            Assert.AreEqual(1, SaltLakeCityAirport.Instance.DockedAirplanes.Count);
+            Assert.AreEqual(plane.Location, PhoenixAirport.Instance);
         }
 
         [TestMethod]
