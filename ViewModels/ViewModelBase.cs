@@ -11,7 +11,7 @@ namespace AirlinesManagerGame.ViewModels
 
         public event NotifyCollectionChangedEventHandler CollectionChanged;
         public void OnCollectionChanged(NotifyCollectionChangedEventArgs e) => CollectionChanged?.Invoke(this, e);
-        //new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Add, purchasedAirplane)
+        
         protected void SendSwitchViewMessage(string viewName)
         {
             Messenger.Default.Send(viewName);
