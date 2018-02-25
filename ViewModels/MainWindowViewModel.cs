@@ -1,8 +1,6 @@
 ﻿using AirlinesManagerGame.Models;
 using GalaSoft.MvvmLight.Messaging;
-using AirlinesManagerGame.Sevices.Mediators;
-using System.Collections.ObjectModel;
-using System.Collections.Specialized;
+using AirlinesManagerGame.Services.Mediators;
 
 namespace AirlinesManagerGame.ViewModels
 {

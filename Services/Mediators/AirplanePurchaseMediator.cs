@@ -1,7 +1,7 @@
 ﻿using System;
 using AirlinesManagerGame.Models;
 
-namespace AirlinesManagerGame.Sevices.Mediators
+namespace AirlinesManagerGame.Services.Mediators
 {
     public class AirplanePurchaseMediator
     {
