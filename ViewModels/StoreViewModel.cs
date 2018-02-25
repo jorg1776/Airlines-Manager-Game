@@ -18,7 +18,7 @@ namespace AirlinesManagerGame.ViewModels
         {
             GoBackViewCommand = new RelayCommand(() => SendSwitchViewMessage("AirplanesStatusView"));
             PurchaseAirplaneCommand = new RelayCommand(() => VerifyPurchase(SelectedAirplane));
-            purchaseVerificationViewModel.OnDecisionVerified += new PurchaseVerificationViewModel.VerificationEventHandler(PurchaseAirplane);
+            purchaseVerificationViewModel.OnDecisionVerified += PurchaseAirplane;
         }
 
         public Airplane SelectedAirplane { get; set; }

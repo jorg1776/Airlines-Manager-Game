@@ -18,7 +18,7 @@ namespace AirlinesManagerGame.ViewModels
             GoToStoreViewCommand = new RelayCommand(() => SendSwitchViewMessage("StoreView"));
             GoToMapViewCommand = new RelayCommand(() => SendSwitchViewMessage("MapView"));
             
-            AirplanePurchaseMediator.OnAirplanePurchased += new AirplanePurchaseMediator.AirplanePurchasedEventHandler(AddPurchasedAirplane);
+            AirplanePurchaseMediator.OnAirplanePurchased += AddPurchasedAirplane;
         }
 
         public ObservableCollection<Airplane> AirplanesList { get { return User.OwnedAirplanes; } }
