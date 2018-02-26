@@ -48,8 +48,27 @@ namespace AirlinesManagerTests.Tests
             AirplanePurchaseMediator.AddAirplane(this,airplane);
 
             //Assert
+            Console.WriteLine(airplanesStatusVM.AirplanesList.Count);
             Assert.IsTrue(airplanesStatusVM.AirplanesList.Count > 0);
             Assert.IsTrue(airplanesStatusVM.AirplanesList.Contains(airplane));
+        }
+
+        [TestMethod]
+        public void UsersPlaneSlotsDecreasedOnAirplanePurchase()
+        {
+            //Arrange
+            var mediator = new AirplanePurchaseMediator();
+            var airplanesStatusVM = new AirplanesStatusViewModel();
+            var airplane = new Bearclaw();
+            var usersAvailablePlainSlotsBefore = airplanesStatusVM.UsersAvailableAirplaneSlots;
+
+            //Act
+            AirplanePurchaseMediator.AddAirplane(this, airplane);
+            var usersAvailablePlainSlotsAfter = airplanesStatusVM.UsersAvailableAirplaneSlots;
+
+            //Assert
+            Console.WriteLine(airplanesStatusVM.AirplanesList.Count);
+            Assert.AreEqual(usersAvailablePlainSlotsBefore - 1, usersAvailablePlainSlotsAfter);
         }
     }
 }
