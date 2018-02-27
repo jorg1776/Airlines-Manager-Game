@@ -2,14 +2,11 @@
 
 namespace AirlinesManagerGame.Models
 {
-    public sealed class User
+    public class User
     {
-        private static readonly User user = new User();
-        public static User Instance { get { return user; } }
+        public ObservableCollection<Airplane> OwnedAirplanes { get; private set; }
 
-        public static ObservableCollection<Airplane> OwnedAirplanes { get; private set; }
-
-        private User()
+        public User()
         {
             Money = 10000;
             Level = 1;
@@ -18,12 +15,12 @@ namespace AirlinesManagerGame.Models
             OwnedAirplanes = new ObservableCollection<Airplane>();
         }
 
-        public static int Experience { get; set; }
+        public int Experience { get; set; }
 
-        public static int Level { get; set; }
+        public int Level { get; set; }
 
-        public static int Money { get; set; }
+        public int Money { get; set; }
 
-        public static int AvailableAirplaneSlots { get; set; }
+        public int AvailableAirplaneSlots { get; set; }
     }
 }

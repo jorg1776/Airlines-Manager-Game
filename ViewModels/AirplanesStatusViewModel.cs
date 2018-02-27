@@ -8,12 +8,16 @@ namespace AirlinesManagerGame.ViewModels
 {
     public class AirplanesStatusViewModel : ViewModelBase
     {
+        private User user;
+
         public RelayCommand LoadPlaneCommand { get; private set; }
         public RelayCommand GoToStoreViewCommand { get; private set; }
         public RelayCommand GoToMapViewCommand { get; private set; }
 
-        public AirplanesStatusViewModel()
+        public AirplanesStatusViewModel(User user)
         {
+            this.user = user;
+
             //LoadPlaneCommand = new RelayCommand();
             GoToStoreViewCommand = new RelayCommand(() => SendSwitchViewMessage("StoreView"));
             GoToMapViewCommand = new RelayCommand(() => SendSwitchViewMessage("MapView"));
@@ -21,14 +25,14 @@ namespace AirlinesManagerGame.ViewModels
             AirplanePurchaseMediator.OnAirplanePurchased += AddPurchasedAirplane;
         }
 
-        public ObservableCollection<Airplane> AirplanesList { get { return User.OwnedAirplanes; } }
+        public ObservableCollection<Airplane> AirplanesList { get { return user.OwnedAirplanes; } }
 
         public Airplane SelectedAirplane { get; set; }
 
         public int UsersAvailableAirplaneSlots
         {
-            get { return User.AvailableAirplaneSlots; }
-            set { User.AvailableAirplaneSlots = value; }
+            get { return user.AvailableAirplaneSlots; }
+            set { user.AvailableAirplaneSlots = value; }
         }
 
         public void AddPurchasedAirplane(object sender, AirplanePurchaseMediator.AirplanePurchasedEventArgs e)

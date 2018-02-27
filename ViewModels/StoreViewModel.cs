@@ -8,14 +8,18 @@ namespace AirlinesManagerGame.ViewModels
 {
     public class StoreViewModel : ViewModelBase
     {
+        private User user;
+
         public ObservableCollection<Airplane> AvailableAirplanesList { get { return Store.AvailableAirplanes; } }
 
         public RelayCommand GoBackViewCommand { get; private set; }
         public RelayCommand PurchaseAirplaneCommand { get; private set; }
         private PurchaseVerificationViewModel purchaseVerificationViewModel = new PurchaseVerificationViewModel();
 
-        public StoreViewModel()
+        public StoreViewModel(User user)
         {
+            this.user = user;
+
             GoBackViewCommand = new RelayCommand(() => SendSwitchViewMessage("AirplanesStatusView"));
             PurchaseAirplaneCommand = new RelayCommand(() => VerifyPurchase(SelectedAirplane));
             purchaseVerificationViewModel.OnDecisionVerified += PurchaseAirplane;
@@ -68,10 +72,10 @@ namespace AirlinesManagerGame.ViewModels
                     && DoesUserHaveTheCapacity();
         }
 
-        private bool IsUserHighEnoughLevel(Airplane airplane) { return User.Level >= airplane.LevelToUnlockAirplane; }
+        private bool IsUserHighEnoughLevel(Airplane airplane) { return user.Level >= airplane.LevelToUnlockAirplane; }
 
-        private bool DoesUserHaveEnoughMoney(Airplane airplane) { return User.Money >= airplane.Price; }
+        private bool DoesUserHaveEnoughMoney(Airplane airplane) { return user.Money >= airplane.Price; }
 
-        private bool DoesUserHaveTheCapacity() { return User.AvailableAirplaneSlots > 0; }
+        private bool DoesUserHaveTheCapacity() { return user.AvailableAirplaneSlots > 0; }
     }
 }

@@ -6,9 +6,11 @@ namespace AirlinesManagerGame.ViewModels
 {
     public class MainWindowViewModel : ViewModelBase
     {
+        private static User user = new User();
+
         private ViewModelBase _currentViewModel;
-        private static readonly AirplanesStatusViewModel airplanesStatusViewModel = new AirplanesStatusViewModel();
-        private static readonly StoreViewModel storeViewModel = new StoreViewModel();
+        private static readonly AirplanesStatusViewModel airplanesStatusViewModel = new AirplanesStatusViewModel(user);
+        private static readonly StoreViewModel storeViewModel = new StoreViewModel(user);
         private static readonly MapViewModel mapViewModel = new MapViewModel();
 
         public MainWindowViewModel()
@@ -35,15 +37,15 @@ namespace AirlinesManagerGame.ViewModels
         public string UsersMoneyAsString { get { return string.Format("Money: ${0:n0}", UsersMoney); } }
         public int UsersMoney
         {
-            get { return User.Money; }
-            set { User.Money = value; OnPropertyChanged(nameof(UsersMoneyAsString)); }
+            get { return user.Money; }
+            set { user.Money = value; OnPropertyChanged(nameof(UsersMoneyAsString)); }
         }
 
         public string UsersLevelString {  get { return string.Format("Level {0}", UsersLevel); } }
         public int UsersLevel
         {
-            get { return User.Level; }
-            set { User.Level = value; }
+            get { return user.Level; }
+            set { user.Level = value; }
         }
 
         private void SetCurrentView(string viewName)
