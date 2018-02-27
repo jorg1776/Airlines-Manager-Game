@@ -2,7 +2,7 @@
 
 namespace AirlinesManagerGame.Models
 {
-    public abstract class Airport
+    public class Airport
     {
         public string Name { get; protected set; }
         public int Price { get; protected set; }
