@@ -74,6 +74,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Models\Airports\Airport.cs" />
+    <Compile Include="Models\Airports\AirportFactory.cs" />
     <Compile Include="Models\Airports\Cities\PhoenixAirport.cs" />
     <Compile Include="Models\Airports\Cities\SaltLakeCityAirport.cs" />
     <Compile Include="Models\CargoType\Cargo.cs" />

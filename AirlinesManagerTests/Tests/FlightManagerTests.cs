@@ -7,7 +7,6 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace AirlinesManagerTests
 {
     [TestClass]
-    [Ignore]
     public class FlightManagerTests
     {
         [TestMethod]
@@ -32,7 +31,7 @@ namespace AirlinesManagerTests
         [TestMethod]
         public void DistanceCalculator()
         {
-            int distance = AirlinesManagerGame.FlightManager.GoogleGeoCodeRequest.GetDistance(new SaltLakeCityAirport(), new SaltLakeCityAirport());
+            int distance = AirlinesManagerGame.FlightManager.GoogleGeoCodeRequest.GetDistance(new SaltLakeCityAirport(), new PhoenixAirport());
 
             Assert.AreEqual(508, distance);
         }
