@@ -9,8 +9,9 @@ namespace AirlinesManagerGame.ViewModels
     public class StoreViewModel : ViewModelBase
     {
         private User user;
+        private static Store store = new Store();
 
-        public ObservableCollection<Airplane> AvailableAirplanesList { get { return Store.AvailableAirplanes; } }
+        public ObservableCollection<Airplane> AvailableAirplanesList { get { return store.AvailableAirplanes; } }
 
         public RelayCommand GoBackViewCommand { get; private set; }
         public RelayCommand PurchaseAirplaneCommand { get; private set; }
