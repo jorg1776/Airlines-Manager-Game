@@ -1,6 +1,4 @@
-﻿using AirlinesManagerGame.Models;
-
-namespace AirlinesManagerGame.Airports.Cities
+﻿namespace AirlinesManagerGame.Models.Airports
 {
     public sealed class SaltLakeCityAirport : Airport
     {
