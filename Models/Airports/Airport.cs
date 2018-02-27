@@ -6,7 +6,7 @@ namespace AirlinesManagerGame.Models
     {
         public string Name { get; protected set; }
         public int Price { get; protected set; }
-        public List<Airplane> DockedAirplanes { get; protected set; }
+        public List<Airplane> DockedAirplanes { get; private set; }
         public List<Passenger> AvailablePassengers { get; }
         public List<Cargo> AvailableCargo { get; }
 

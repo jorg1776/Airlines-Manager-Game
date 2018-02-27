@@ -2,7 +2,7 @@
 {
     public sealed class SaltLakeCityAirport : Airport
     {
-        private SaltLakeCityAirport()
+        public SaltLakeCityAirport()
         {
             Name = "Salt Lake City Airport";
         }

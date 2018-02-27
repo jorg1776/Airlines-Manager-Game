@@ -2,7 +2,7 @@
 {
     public sealed class PhoenixAirport : Airport
     {
-        private PhoenixAirport()
+        public PhoenixAirport()
         {
             Name = "Phoenix Airport";
         }
