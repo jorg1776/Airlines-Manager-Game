@@ -28,11 +28,18 @@ namespace AirlinesManagerGame.ViewModels
 
         public Airplane SelectedAirplane { get; set; }
 
+        private string _errorText;
+        public string ErrorText
+        {
+            get { return _errorText; }
+            private set { _errorText = value; OnPropertyChanged(nameof(ErrorText)); }
+        }
+
         private void VerifyPurchase(Airplane airplaneForPurchase)
         {
             if(airplaneForPurchase == null)
             {
-                Console.WriteLine("null");
+                ErrorText = "Please select an airplane";
             }
             else if (airplaneForPurchase != null && CanUserPurchaseAirplane(airplaneForPurchase))
             {
@@ -40,8 +47,16 @@ namespace AirlinesManagerGame.ViewModels
             }
             else
             {
-                Console.WriteLine("Can't purchase");
+                ErrorText = DetermineError(airplaneForPurchase);
             }
+        }
+
+        private string DetermineError(Airplane airplaneForPurchase)
+        {
+            if(!IsUserHighEnoughLevel(airplaneForPurchase)) { return "Not high enough level"; }
+            else if (!DoesUserHaveEnoughMoney(airplaneForPurchase)) { return "Not enough money"; }
+            else if (!DoesUserHaveTheCapacity()) { return "Insufficient capacity"; }
+            else { return "Error"; }
         }
 
         private void PurchaseAirplane(object sender, VerificationEventArgs e)

@@ -28,6 +28,7 @@
         </DataGrid>
         <Button Command="{Binding GoBackViewCommand}" Content="Back" HorizontalAlignment="Left" Margin="10,70,0,0" VerticalAlignment="Top" Width="75" Grid.Column="1"/>
         <Button Command="{Binding PurchaseAirplaneCommand}" Content="Purchase" HorizontalAlignment="Left" Margin="10,40,0,0" VerticalAlignment="Top" Width="75" Grid.Column="1"/>
+        <Label Content="{Binding ErrorText}" Margin="10,20,0,10" VerticalAlignment="Top" FontSize="10" Foreground="#FFF60505" Grid.Column="1"/>
 
     </Grid>
 </UserControl>
