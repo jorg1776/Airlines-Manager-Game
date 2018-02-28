@@ -3,7 +3,6 @@ using AirlinesManagerGame.Models.Airports;
 using AirlinesManagerGame.Sevices;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-
 namespace AirlinesManagerTests
 {
     [TestClass]
