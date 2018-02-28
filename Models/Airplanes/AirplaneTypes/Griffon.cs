@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace AirlinesManagerGame.Models.Airplanes.AirplaneTypes
+namespace AirlinesManagerGame.Models
 {
     public class Griffon : Airplane
     {
