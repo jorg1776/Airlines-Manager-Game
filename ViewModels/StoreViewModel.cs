@@ -51,6 +51,19 @@ namespace AirlinesManagerGame.ViewModels
             }
         }
 
+        public bool CanUserPurchaseAirplane(Airplane airplane)
+        {
+            return IsUserHighEnoughLevel(airplane)
+                    && DoesUserHaveEnoughMoney(airplane)
+                    && DoesUserHaveTheCapacity();
+        }
+
+        private bool IsUserHighEnoughLevel(Airplane airplane) { return user.Level >= airplane.LevelToUnlock; }
+
+        private bool DoesUserHaveEnoughMoney(Airplane airplane) { return user.Money >= airplane.Price; }
+
+        private bool DoesUserHaveTheCapacity() { return user.AvailableAirplaneSlots > 0; }
+
         private string DetermineError(Airplane airplaneForPurchase)
         {
             if(!IsUserHighEnoughLevel(airplaneForPurchase)) { return "Not high enough level"; }
@@ -82,18 +95,5 @@ namespace AirlinesManagerGame.ViewModels
                     throw new Exception();
             }
         }
-
-        public bool CanUserPurchaseAirplane(Airplane airplane)
-        {
-            return IsUserHighEnoughLevel(airplane)
-                    && DoesUserHaveEnoughMoney(airplane)
-                    && DoesUserHaveTheCapacity();
-        }
-
-        private bool IsUserHighEnoughLevel(Airplane airplane) { return user.Level >= airplane.LevelToUnlock; }
-
-        private bool DoesUserHaveEnoughMoney(Airplane airplane) { return user.Money >= airplane.Price; }
-
-        private bool DoesUserHaveTheCapacity() { return user.AvailableAirplaneSlots > 0; }
     }
 }
