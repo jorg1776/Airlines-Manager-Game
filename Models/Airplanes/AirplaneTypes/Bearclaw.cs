@@ -8,7 +8,7 @@ namespace AirlinesManagerGame.Models
         {
             Name = "Bearclaw";
             Price = 7000;
-            LevelToUnlockAirplane = 1;
+            LevelToUnlock = 1;
             Class = 1;
             Range = 500;
             Speed = 126;

@@ -8,7 +8,7 @@ namespace AirlinesManagerGame.Models
         public string Name { get; protected set; }
         public int Price { get; protected set; }
         public string PriceAsString { get { return String.Format("${0:n0}", Price); } }
-        public int LevelToUnlockAirplane { get; protected set; }
+        public int LevelToUnlock { get; protected set; }
         public int Class { get; protected set; }
         public int Range { get; protected set; }
         public int Speed { get; protected set; }

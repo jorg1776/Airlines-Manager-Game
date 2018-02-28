@@ -8,7 +8,7 @@ namespace AirlinesManagerGame.Models
         {
             Name = "Griffon";
             Price = 7500;
-            LevelToUnlockAirplane = 1;
+            LevelToUnlock = 1;
             Class = 1;
             Range = 800;
             Speed = 140;

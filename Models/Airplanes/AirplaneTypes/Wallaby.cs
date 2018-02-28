@@ -6,7 +6,7 @@
         {
             Name = "Wallaby";
             Price = 9000;
-            LevelToUnlockAirplane = 3;
+            LevelToUnlock = 3;
             Class = 1;
             Range = 700;
             Speed = 143;
