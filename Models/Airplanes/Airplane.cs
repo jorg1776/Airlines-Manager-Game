@@ -14,8 +14,8 @@ namespace AirlinesManagerGame.Models
         public int Speed { get; protected set; }
         public double Weight { get; protected set; }
         public int Capacity { get; protected set; }
-        private LoadTypes _loadType;
-        public string LoadType { get { return _loadType.ToString(); } }
+        protected LoadTypes _LoadType { get; set; }
+        public string LoadType { get { return _LoadType.ToString(); } }
         public int CargoCapacity { get; protected set; }
         public int PassengerCapacity { get; protected set; }
 
@@ -31,25 +31,24 @@ namespace AirlinesManagerGame.Models
 
         private void SetLoadType()
         {
-            Random random = new Random();
-            int loadTypeDecider = random.Next(1, 4);
+            int loadTypeDecider = new Random().Next(1, 4);
             switch (loadTypeDecider)
             {
                 case 1:
-                    _loadType = LoadTypes.Passenger;
+                    _LoadType = LoadTypes.Passenger;
                     break;
                 case 2:
-                    _loadType = LoadTypes.Cargo;
+                    _LoadType = LoadTypes.Cargo;
                     break;
                 case 3:
-                    _loadType = LoadTypes.Mixed;
+                    _LoadType = LoadTypes.Mixed;
                     break;
             }
         }
 
         protected void SetCargoAndPassengerCapacities()
         {
-            switch (_loadType.ToString())
+            switch (_LoadType.ToString())
             {
                 case "PassengerOnly":
                     PassengerCapacity = Capacity;
