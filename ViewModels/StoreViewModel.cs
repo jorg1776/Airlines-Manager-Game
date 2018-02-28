@@ -73,7 +73,7 @@ namespace AirlinesManagerGame.ViewModels
                     && DoesUserHaveTheCapacity();
         }
 
-        private bool IsUserHighEnoughLevel(Airplane airplane) { return user.Level >= airplane.LevelToUnlockAirplane; }
+        private bool IsUserHighEnoughLevel(Airplane airplane) { return user.Level >= airplane.LevelToUnlock; }
 
         private bool DoesUserHaveEnoughMoney(Airplane airplane) { return user.Money >= airplane.Price; }
 
