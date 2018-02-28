@@ -73,6 +73,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Models\Airplanes\AirplaneTypes\Griffon.cs" />
     <Compile Include="Models\Airports\Airport.cs" />
     <Compile Include="Models\Airports\AirportFactory.cs" />
     <Compile Include="Models\Airports\Cities\PhoenixAirport.cs" />
