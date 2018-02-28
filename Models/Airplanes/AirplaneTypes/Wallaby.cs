@@ -5,7 +5,7 @@
         public Wallaby()
         {
             Name = "Wallaby";
-            Price = 10000;
+            Price = 9000;
             LevelToUnlockAirplane = 3;
             Class = 1;
             Range = 700;
