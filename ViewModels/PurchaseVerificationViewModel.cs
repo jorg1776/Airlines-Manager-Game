@@ -12,11 +12,13 @@ namespace AirlinesManagerGame.ViewModels
         public RelayCommand AcceptPurchaseCommand { get; private set; }
         public RelayCommand DeclinePurchaseCommand { get; private set; }
 
+        private Airplane airplaneForPurchase;
+
         public PurchaseVerificationViewModel()
         {
             AcceptPurchaseCommand = new RelayCommand(() => 
             {
-                OnDecisionVerified(this, new VerificationEventArgs(true));
+                OnDecisionVerified(this, new VerificationEventArgs(airplaneForPurchase, true));
                 windowService.CloseWindow();
             });
 
@@ -27,7 +29,7 @@ namespace AirlinesManagerGame.ViewModels
         public string VerificationQuestion
         {
             get { return _verificationQuestion; }
-            set
+            private set
             {
                 if (_verificationQuestion != value)
                 {
@@ -44,8 +46,12 @@ namespace AirlinesManagerGame.ViewModels
 
         public void ValidatePurchase(Airplane selectedAirplane)
         {
-            SetVerificationQuestion(selectedAirplane);
-            windowService.ShowPurchaseVerificationWindow(this);
+            if (windowService.CanDisplayWindow)
+            {
+                SetVerificationQuestion(selectedAirplane);
+                airplaneForPurchase = selectedAirplane;
+                windowService.ShowPurchaseVerificationWindow(this);
+            }
         }
 
         public delegate void VerificationEventHandler(object sender, VerificationEventArgs args);
@@ -54,13 +60,14 @@ namespace AirlinesManagerGame.ViewModels
 
     public class VerificationEventArgs : EventArgs
     {
-        public bool _decision;
 
-        public VerificationEventArgs(bool decision)
+        public VerificationEventArgs(Airplane airplane, bool decision)
         {
-            _decision = decision;
+            PurchasedAirplane = airplane;
+            Decision = decision;
         }
 
-        public bool Decision { get { return _decision; } }
+        public bool Decision { get; private set; }
+        public Airplane PurchasedAirplane { get; private set; }
     }
 }
