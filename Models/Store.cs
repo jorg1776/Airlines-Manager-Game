@@ -16,6 +16,7 @@ namespace AirlinesManagerGame.Models
         {
             AvailableAirplanes.Add(new Bearclaw());
             AvailableAirplanes.Add(new Wallaby());
+            AvailableAirplanes.Add(new Griffon());
         }
     }
 }
