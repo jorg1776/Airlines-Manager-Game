@@ -59,6 +59,8 @@ namespace AirlinesManagerGame.ViewModels
             {
                 case "Bearclaw":
                     return new Bearclaw();
+                case "Griffon":
+                    return new Griffon();
                 case "Wallaby":
                     return new Wallaby();
                 default:
