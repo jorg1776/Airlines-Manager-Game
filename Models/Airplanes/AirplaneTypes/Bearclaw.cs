@@ -1,11 +1,13 @@
-﻿namespace AirlinesManagerGame.Models
+﻿using System;
+
+namespace AirlinesManagerGame.Models
 {
     public class Bearclaw : Airplane
     {
         public Bearclaw()
         {
             Name = "Bearclaw";
-            Price = 5000;
+            Price = 7000;
             LevelToUnlockAirplane = 1;
             Class = 1;
             Range = 500;
@@ -17,8 +19,20 @@
 
         protected override void SetMixedCapacities()
         {
-            CargoCapacity = 1;
-            PassengerCapacity = 1;
+            //Capacity is 1, so it can't be mixed so LoadType must be changed
+            int randomAssigning = new Random().Next(2);
+
+            switch(randomAssigning)
+            {
+                case 0:
+                    _LoadType = LoadTypes.Passenger;
+                    PassengerCapacity = 1;
+                    break;
+                case 1:
+                    _LoadType = LoadTypes.Cargo;
+                    CargoCapacity = 1;
+                    break;
+            }
         }
     }
 }
