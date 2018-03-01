@@ -10,12 +10,13 @@ namespace AirlinesManagerGame.FlightManager
 {
     public class GoogleGeoCodeRequest
     {
-        //Key: AIzaSyCjZDrRBimoDneu-ktpSKJ8X0CMkJY-iu0
+        //Key: 
         public static int GetDistance(Airport origin, Airport destination)
         {
             string originAirportName = origin.Name.Replace(' ', '+');
             string destinationAirportName = destination.Name.Replace(' ', '+');
-            string url = "https://maps.googleapis.com/maps/api/geocode/json?address={0}&key=AIzaSyCjZDrRBimoDneu-ktpSKJ8X0CMkJY-iu0";
+            var googleAPIKey = System.Configuration.ConfigurationManager.AppSettings["GoogleAPIKey"];
+            string url = "https://maps.googleapis.com/maps/api/geocode/json?address={0}&key=" + googleAPIKey;
 
             GeoCoordinate originCoordinates = GetCoordinates(url, originAirportName);
             GeoCoordinate destinationCoordinates = GetCoordinates(url, destinationAirportName);
