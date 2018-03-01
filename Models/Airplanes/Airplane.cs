@@ -1,21 +1,33 @@
-﻿using System;
+﻿using AirlinesManagerGame.ViewModels;
+using System;
 using System.Collections.Generic;
 
 namespace AirlinesManagerGame.Models
 {
-    public abstract class Airplane
+    public abstract class Airplane : ViewModelBase
     {
         public string Name { get; protected set; }
         public int Price { get; protected set; }
         public string PriceAsString { get { return String.Format("${0:n0}", Price); } }
-        public int LevelToUnlockAirplane { get; protected set; }
+        public int LevelToUnlock { get; protected set; }
         public int Class { get; protected set; }
         public int Range { get; protected set; }
         public int Speed { get; protected set; }
         public double Weight { get; protected set; }
         public int Capacity { get; protected set; }
-        private LoadTypes _loadType;
-        public string LoadType { get { return _loadType.ToString(); } }
+
+        private LoadTypes _loadTypes;
+        public LoadTypes LoadType
+        {
+            get { return _loadTypes; }
+            set { _loadTypes = value; LoadTypeAsString = _loadTypes.ToString(); }
+        }
+        public string LoadTypeAsString
+        {
+            get { return LoadType.ToString(); }
+            set { OnPropertyChanged(nameof(LoadTypeAsString)); }
+        }
+
         public int CargoCapacity { get; protected set; }
         public int PassengerCapacity { get; protected set; }
 
@@ -29,27 +41,32 @@ namespace AirlinesManagerGame.Models
             SetLoadType();
         }
 
+        public void RefreshLoadType()
+        {
+            SetLoadType();
+            SetCargoAndPassengerCapacities();
+        }
+
         private void SetLoadType()
         {
-            Random random = new Random();
-            int loadTypeDecider = random.Next(1, 4);
+            int loadTypeDecider = new Random().Next(1, 4);
             switch (loadTypeDecider)
             {
                 case 1:
-                    _loadType = LoadTypes.Passenger;
+                    LoadType = LoadTypes.Passenger;
                     break;
                 case 2:
-                    _loadType = LoadTypes.Cargo;
+                    LoadType = LoadTypes.Cargo;
                     break;
                 case 3:
-                    _loadType = LoadTypes.Mixed;
+                    LoadType = LoadTypes.Mixed;
                     break;
             }
         }
 
         protected void SetCargoAndPassengerCapacities()
         {
-            switch (_loadType.ToString())
+            switch (LoadType.ToString())
             {
                 case "PassengerOnly":
                     PassengerCapacity = Capacity;

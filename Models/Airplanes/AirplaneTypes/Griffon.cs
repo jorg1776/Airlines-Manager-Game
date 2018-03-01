@@ -2,17 +2,17 @@
 
 namespace AirlinesManagerGame.Models
 {
-    public class Bearclaw : Airplane
+    public class Griffon : Airplane
     {
-        public Bearclaw()
+        public Griffon()
         {
-            Name = "Bearclaw";
-            Price = 7000;
+            Name = "Griffon";
+            Price = 7500;
             LevelToUnlock = 1;
             Class = 1;
-            Range = 500;
-            Speed = 126;
-            Weight = 1;
+            Range = 800;
+            Speed = 140;
+            Weight = 1.1;
             Capacity = 1;
             SetCargoAndPassengerCapacities();
         }
@@ -22,7 +22,7 @@ namespace AirlinesManagerGame.Models
             //Capacity is 1, so it can't be mixed so LoadType must be changed
             int randomAssigning = new Random().Next(2);
 
-            switch(randomAssigning)
+            switch (randomAssigning)
             {
                 case 0:
                     LoadType = LoadTypes.Passenger;
