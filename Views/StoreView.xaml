@@ -18,7 +18,7 @@
                 <DataGridTextColumn Header="Name" Binding="{Binding Name}" ElementStyle="{StaticResource CellCenterTextStyle}" Width="*"/>
                 <DataGridTextColumn Header="Class" Binding="{Binding Class}" ElementStyle="{StaticResource CellCenterTextStyle}" Width=".55*"/>
                 <DataGridTextColumn Header="Capacity" Binding="{Binding Capacity}" ElementStyle="{StaticResource CellCenterTextStyle}" Width=".85*"/>
-                <DataGridTextColumn Header="Type" Binding="{Binding LoadType}" ElementStyle="{StaticResource CellCenterTextStyle}" Width="*"/>
+                <DataGridTextColumn Header="Type" Binding="{Binding LoadTypeAsString}" ElementStyle="{StaticResource CellCenterTextStyle}" Width="*"/>
                 <DataGridTextColumn Header="Range" Binding="{Binding Range}" ElementStyle="{StaticResource CellCenterTextStyle}" Width=".75*"/>
                 <DataGridTextColumn Header="Speed" Binding="{Binding Speed}" ElementStyle="{StaticResource CellCenterTextStyle}" Width=".75*"/>
                 <DataGridTextColumn Header="Weight" Binding="{Binding Weight}" ElementStyle="{StaticResource CellCenterTextStyle}" Width=".75*"/>
@@ -28,7 +28,8 @@
         </DataGrid>
         <Button Command="{Binding GoBackViewCommand}" Content="Back" HorizontalAlignment="Left" Margin="10,70,0,0" VerticalAlignment="Top" Width="75" Grid.Column="1"/>
         <Button Command="{Binding PurchaseAirplaneCommand}" Content="Purchase" HorizontalAlignment="Left" Margin="10,40,0,0" VerticalAlignment="Top" Width="75" Grid.Column="1"/>
-        <Label Content="{Binding ErrorText}" Margin="10,20,0,10" VerticalAlignment="Top" FontSize="10" Foreground="#FFF60505" Grid.Column="1"/>
+        <Label Content="{Binding ErrorText}" Margin="0,20,0,10" VerticalAlignment="Top" FontSize="10" Foreground="#FFF60505" Grid.Column="1"/>
+        <Label Content="{Binding TimerDisplay}" Margin="0,0,0,20" VerticalAlignment="Bottom" HorizontalAlignment="Left" Grid.Column="1"/>
 
     </Grid>
 </UserControl>

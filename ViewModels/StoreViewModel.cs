@@ -3,6 +3,7 @@ using AirlinesManagerGame.Services.Mediators;
 using GalaSoft.MvvmLight.Command;
 using System;
 using System.Collections.ObjectModel;
+using System.Windows.Threading;
 
 namespace AirlinesManagerGame.ViewModels
 {
@@ -17,6 +18,15 @@ namespace AirlinesManagerGame.ViewModels
         public RelayCommand PurchaseAirplaneCommand { get; private set; }
         private PurchaseVerificationViewModel purchaseVerificationViewModel = new PurchaseVerificationViewModel();
 
+        public Airplane SelectedAirplane { get; set; }
+
+        private string _timerDisplay = "Refresh Types in: ";
+        public string TimerDisplay
+        {
+            get { return _timerDisplay; }
+            set { _timerDisplay = value; OnPropertyChanged(nameof(TimerDisplay)); }
+        }
+
         public StoreViewModel(User user)
         {
             this.user = user;
@@ -24,9 +34,39 @@ namespace AirlinesManagerGame.ViewModels
             GoBackViewCommand = new RelayCommand(() => SendSwitchViewMessage("AirplanesStatusView"));
             PurchaseAirplaneCommand = new RelayCommand(() => VerifyPurchase(SelectedAirplane));
             purchaseVerificationViewModel.OnDecisionVerified += PurchaseAirplane;
+            StartTimer();
         }
 
-        public Airplane SelectedAirplane { get; set; }
+        private DispatcherTimer timer1;
+        private TimeSpan time = TimeSpan.FromMinutes(5);
+        private void StartTimer()
+        {
+            timer1 = new DispatcherTimer();
+            timer1.Tick += timer_Tick;
+            timer1.Interval = new TimeSpan(0, 0, 1); // 60 seconds
+            timer1.Start();
+        }
+
+        private void timer_Tick(object sender, EventArgs e)
+        {
+            time -= TimeSpan.FromSeconds(1);
+            TimerDisplay = "Refresh Types in: " + time.ToString(@"m\:ss");
+            if (time == TimeSpan.Zero)
+            {
+                timer1.Stop();
+                RefreshLoadTypes();
+                time = TimeSpan.FromMinutes(5);
+                timer1.Start();
+            }
+        }
+
+        private void RefreshLoadTypes()
+        {
+            foreach(Airplane airplane in AvailableAirplanesList)
+            {
+                airplane.RefreshLoadType();
+            }
+        }
 
         private string _errorText;
         public string ErrorText

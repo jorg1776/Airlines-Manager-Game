@@ -25,11 +25,11 @@ namespace AirlinesManagerGame.Models
             switch(randomAssigning)
             {
                 case 0:
-                    _LoadType = LoadTypes.Passenger;
+                    LoadType = LoadTypes.Passenger;
                     PassengerCapacity = 1;
                     break;
                 case 1:
-                    _LoadType = LoadTypes.Cargo;
+                    LoadType = LoadTypes.Cargo;
                     CargoCapacity = 1;
                     break;
             }

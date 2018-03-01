@@ -1,9 +1,10 @@
-﻿using System;
+﻿using AirlinesManagerGame.ViewModels;
+using System;
 using System.Collections.Generic;
 
 namespace AirlinesManagerGame.Models
 {
-    public abstract class Airplane
+    public abstract class Airplane : ViewModelBase
     {
         public string Name { get; protected set; }
         public int Price { get; protected set; }
@@ -14,8 +15,19 @@ namespace AirlinesManagerGame.Models
         public int Speed { get; protected set; }
         public double Weight { get; protected set; }
         public int Capacity { get; protected set; }
-        protected LoadTypes _LoadType { get; set; }
-        public string LoadType { get { return _LoadType.ToString(); } }
+
+        private LoadTypes _loadTypes;
+        public LoadTypes LoadType
+        {
+            get { return _loadTypes; }
+            set { _loadTypes = value; LoadTypeAsString = _loadTypes.ToString(); }
+        }
+        public string LoadTypeAsString
+        {
+            get { return LoadType.ToString(); }
+            set { OnPropertyChanged(nameof(LoadTypeAsString)); }
+        }
+
         public int CargoCapacity { get; protected set; }
         public int PassengerCapacity { get; protected set; }
 
@@ -29,26 +41,32 @@ namespace AirlinesManagerGame.Models
             SetLoadType();
         }
 
+        public void RefreshLoadType()
+        {
+            SetLoadType();
+            SetCargoAndPassengerCapacities();
+        }
+
         private void SetLoadType()
         {
             int loadTypeDecider = new Random().Next(1, 4);
             switch (loadTypeDecider)
             {
                 case 1:
-                    _LoadType = LoadTypes.Passenger;
+                    LoadType = LoadTypes.Passenger;
                     break;
                 case 2:
-                    _LoadType = LoadTypes.Cargo;
+                    LoadType = LoadTypes.Cargo;
                     break;
                 case 3:
-                    _LoadType = LoadTypes.Mixed;
+                    LoadType = LoadTypes.Mixed;
                     break;
             }
         }
 
         protected void SetCargoAndPassengerCapacities()
         {
-            switch (_LoadType.ToString())
+            switch (LoadType.ToString())
             {
                 case "PassengerOnly":
                     PassengerCapacity = Capacity;
