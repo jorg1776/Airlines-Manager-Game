@@ -116,24 +116,32 @@ namespace AirlinesManagerGame.ViewModels
         {
             if (e.Decision == true)
             {
-                var purchasedAirplane = CreateNewAirplane(e.PurchasedAirplane.GetType().Name);
+                var purchasedAirplane = CreateNewAirplane(e.PurchasedAirplane);
                 AirplanePurchaseMediator.AddAirplane(this, purchasedAirplane);
             }
         }
 
-        private Airplane CreateNewAirplane(string name)
+        private Airplane CreateNewAirplane(Airplane airplaneType)
         {
-            switch (name)
+            Airplane newAirplane;
+
+            switch (airplaneType.GetType().Name)
             {
                 case "Bearclaw":
-                    return new Bearclaw();
+                    newAirplane = new Bearclaw();
+                    break;
                 case "Griffon":
-                    return new Griffon();
+                    newAirplane = new Griffon();
+                    break;
                 case "Wallaby":
-                    return new Wallaby();
+                    newAirplane = new Wallaby();
+                    break;
                 default:
                     throw new Exception();
             }
+
+            newAirplane.LoadType = airplaneType.LoadType;
+            return newAirplane;
         }
     }
 }
