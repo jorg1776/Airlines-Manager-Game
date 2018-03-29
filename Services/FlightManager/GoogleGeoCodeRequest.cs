@@ -1,4 +1,9 @@
 ﻿/*
+ *  Only keeping cause I'm pretty dang proud of this class
+ * /
+
+
+/*
 using AirlinesManagerGame.Models;
 using Newtonsoft.Json;
 using System;
