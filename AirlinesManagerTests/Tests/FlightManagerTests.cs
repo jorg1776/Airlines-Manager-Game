@@ -2,6 +2,7 @@
 using AirlinesManagerGame.Models.Airports;
 using AirlinesManagerGame.Sevices;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System.Device.Location;
 
 namespace AirlinesManagerTests
 {
@@ -25,14 +26,6 @@ namespace AirlinesManagerTests
         {
             var airportName = new SaltLakeCityAirport().Name;
             Assert.AreEqual("Salt+Lake+City+Airport", airportName.Replace(' ', '+'));
-        }
-
-        [TestMethod]
-        public void DistanceCalculator()
-        {
-            int distance = AirlinesManagerGame.FlightManager.GoogleGeoCodeRequest.GetDistance(new SaltLakeCityAirport(), new PhoenixAirport());
-
-            Assert.AreEqual(508, distance);
         }
     }
 }

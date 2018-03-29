@@ -1,4 +1,5 @@
 ﻿using AirlinesManagerGame.Models;
+using System;
 
 namespace AirlinesManagerGame.Sevices
 {
@@ -22,5 +23,15 @@ namespace AirlinesManagerGame.Sevices
             airplane.Location = destination;
             airplane.Destination = null;
         }
+
+        private static int CalculateDistance(Airport origin, Airport destination)
+        {
+            double distanceInMeters = origin.Location.GetDistanceTo(destination.Location);
+            double distanceInMiles = ConvertToMiles(distanceInMeters);
+
+            return Convert.ToInt32(distanceInMiles);
+        }
+
+        private static double ConvertToMiles(double meters) { return meters * 0.00062137119223733; }
     }
 }
