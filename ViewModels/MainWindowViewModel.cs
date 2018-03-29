@@ -11,7 +11,6 @@ namespace AirlinesManagerGame.ViewModels
         private ViewModelBase _currentViewModel;
         private static readonly AirplanesStatusViewModel airplanesStatusViewModel = new AirplanesStatusViewModel(user);
         private static readonly StoreViewModel storeViewModel = new StoreViewModel(user);
-        private static readonly MapViewModel mapViewModel = new MapViewModel();
 
         public MainWindowViewModel()
         {
@@ -57,9 +56,6 @@ namespace AirlinesManagerGame.ViewModels
                     break;
                 case "StoreView":
                     CurrentViewModel = storeViewModel;
-                    break;
-                case "MapView":
-                    CurrentViewModel = mapViewModel;
                     break;
             }
         }

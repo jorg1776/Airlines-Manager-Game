@@ -12,7 +12,6 @@ namespace AirlinesManagerGame.ViewModels
 
         public RelayCommand LoadPlaneCommand { get; private set; }
         public RelayCommand GoToStoreViewCommand { get; private set; }
-        public RelayCommand GoToMapViewCommand { get; private set; }
 
         public AirplanesStatusViewModel(User user)
         {
@@ -20,7 +19,6 @@ namespace AirlinesManagerGame.ViewModels
 
             //LoadPlaneCommand = new RelayCommand();
             GoToStoreViewCommand = new RelayCommand(() => SendSwitchViewMessage("StoreView"));
-            GoToMapViewCommand = new RelayCommand(() => SendSwitchViewMessage("MapView"));
             
             AirplanePurchaseMediator.OnAirplanePurchased += AddPurchasedAirplane;
         }

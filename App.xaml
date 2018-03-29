@@ -16,9 +16,6 @@
         <DataTemplate DataType="{x:Type viewmodels:StoreViewModel}">
             <views:StoreView />
         </DataTemplate>
-        <DataTemplate DataType="{x:Type viewmodels:MapViewModel}">
-            <views:MapView />
-        </DataTemplate>
       
         <Style x:Key="CenterDataGridHeaderStyle" TargetType="DataGridColumnHeader">
       <Setter Property="HorizontalContentAlignment" Value="Center" />

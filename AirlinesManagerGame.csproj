@@ -89,11 +89,6 @@
     <Compile Include="Views\AirplanesStatusView.xaml.cs">
       <DependentUpon>AirplanesStatusView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\WorldMap\MapView.xaml.cs">
-      <DependentUpon>MapView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="ViewModels\MapViewModel.cs" />
-    <Compile Include="Views\WorldMap\ZoomBorder.cs" />
     <Compile Include="Views\PurchaseVerificationWindow.xaml.cs">
       <DependentUpon>PurchaseVerificationWindow.xaml</DependentUpon>
     </Compile>
@@ -122,10 +117,6 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Views\AirplanesStatusView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\WorldMap\MapView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -167,9 +158,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Views\WorldMap\WorldMap.jpeg" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
