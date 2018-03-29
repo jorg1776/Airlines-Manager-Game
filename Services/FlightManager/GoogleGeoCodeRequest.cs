@@ -1,4 +1,5 @@
-﻿using AirlinesManagerGame.Models;
+﻿/*
+using AirlinesManagerGame.Models;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -10,7 +11,6 @@ namespace AirlinesManagerGame.FlightManager
 {
     public class GoogleGeoCodeRequest
     {
-        //Key: 
         public static int GetDistance(Airport origin, Airport destination)
         {
             string originAirportName = origin.Name.Replace(' ', '+');
@@ -29,7 +29,7 @@ namespace AirlinesManagerGame.FlightManager
 
         private static double ConvertToMiles(double meters) { return meters * 0.00062137119223733; }
 
-        private static GeoCoordinate GetCoordinates(string url, string airportName)
+        public static GeoCoordinate GetCoordinates(string url, string airportName)
         {
             string json = GetGoogleGeoCodeJson(string.Format(url, airportName));
             var root = JsonConvert.DeserializeObject<RootObject>(json);
@@ -114,3 +114,4 @@ namespace AirlinesManagerGame.FlightManager
         #endregion
     }
 }
+*/
