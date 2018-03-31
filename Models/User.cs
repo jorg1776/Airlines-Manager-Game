@@ -5,6 +5,7 @@ namespace AirlinesManagerGame.Models
     public class User
     {
         public ObservableCollection<Airplane> OwnedAirplanes { get; private set; }
+        public ObservableCollection<Airport> OwnedAirports { get; private set; }
 
         public User()
         {
@@ -13,6 +14,7 @@ namespace AirlinesManagerGame.Models
             AvailableAirplaneSlots = 4;
             Experience = 0;
             OwnedAirplanes = new ObservableCollection<Airplane>();
+            OwnedAirports = new ObservableCollection<Airport>();
         }
 
         public int Experience { get; set; }
