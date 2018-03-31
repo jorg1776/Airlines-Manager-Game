@@ -5,7 +5,7 @@ namespace AirlinesManagerGame.Sevices
 {
     public class FlightManager
     {
-        public static void FlyPlane (Airplane airplane, Airport destination)
+        public static void FlyPlane(Airplane airplane, Airport destination)
         {
             SendPlane(airplane, airplane.Location, destination);
             LandPlane(airplane, destination);
@@ -24,7 +24,7 @@ namespace AirlinesManagerGame.Sevices
             airplane.Destination = null;
         }
 
-        private static int CalculateDistance(Airport origin, Airport destination)
+        public static int CalculateDistance(Airport origin, Airport destination)
         {
             double distanceInMeters = origin.Location.GetDistanceTo(destination.Location);
             double distanceInMiles = ConvertToMiles(distanceInMeters);
