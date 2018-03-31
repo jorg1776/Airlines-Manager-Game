@@ -5,6 +5,8 @@ namespace AirlinesManagerGame.Models
 {
     public class Airport
     {
+        public User GetUser { get; private set; }
+
         public string Name { get; protected set; }
         public int Price { get; protected set; }
         public List<Airplane> DockedAirplanes { get; private set; }
@@ -13,8 +15,9 @@ namespace AirlinesManagerGame.Models
 
         public GeoCoordinate Location { get; protected set; }
 
-        protected Airport()
+        protected Airport(User user)
         {
+            GetUser = user;
             DockedAirplanes = new List<Airplane>();
         }
     }

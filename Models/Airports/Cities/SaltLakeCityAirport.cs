@@ -8,7 +8,7 @@ namespace AirlinesManagerGame.Models.Airports
         private double latitude = 40.7899;
         private double longitude = 111.9791;
 
-        public SaltLakeCityAirport()
+        public SaltLakeCityAirport(User user) : base(user)
         {
             Name = "Salt Lake City Airport";
             Location = new GeoCoordinate(latitude, longitude);
