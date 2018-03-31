@@ -76,10 +76,10 @@
     </ApplicationDefinition>
     <Compile Include="Models\Airplanes\AirplaneTypes\Griffon.cs" />
     <Compile Include="Models\Airports\Airport.cs" />
-    <Compile Include="Models\Airports\AirportFactory.cs" />
     <Compile Include="Models\Airports\Cities\PhoenixAirport.cs" />
     <Compile Include="Models\Airports\Cities\SaltLakeCityAirport.cs" />
     <Compile Include="Models\CargoType\Cargo.cs" />
+    <Compile Include="Models\CargoType\ICargoType.cs" />
     <Compile Include="Models\CargoType\Passenger.cs" />
     <Compile Include="Services\FlightManager\FlightManager.cs" />
     <Compile Include="Services\FlightManager\GoogleGeoCodeRequest.cs" />

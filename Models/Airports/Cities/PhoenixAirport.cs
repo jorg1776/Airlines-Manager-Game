@@ -8,7 +8,7 @@ namespace AirlinesManagerGame.Models.Airports
         private double latitude = 33.4373;
         private double longitude = 112.0078;
 
-        public PhoenixAirport()
+        public PhoenixAirport(User user) : base(user)
         {
             Name = "Phoenix Airport";
             Location = new GeoCoordinate(latitude, longitude);
