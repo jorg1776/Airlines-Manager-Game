@@ -1,4 +1,5 @@
 ﻿using AirlinesManagerGame.Sevices;
+using System;
 
 namespace AirlinesManagerGame.Models
 {
@@ -24,8 +25,12 @@ namespace AirlinesManagerGame.Models
 
         protected Airport SetRandomDestination()
         {
-            //TODO: Get User's owned airports and select a random airport from that list
-            return null;
+            var ownedAirports = Location.GetUser.OwnedAirports;
+
+            Random random = new Random();
+            int index = random.Next(ownedAirports.Count);
+
+            return ownedAirports[index];
         }
 
         protected abstract string GetRandomName();
