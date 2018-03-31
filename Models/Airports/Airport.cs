@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Device.Location;
 
 namespace AirlinesManagerGame.Models
@@ -9,6 +10,9 @@ namespace AirlinesManagerGame.Models
 
         public string Name { get; protected set; }
         public int Price { get; protected set; }
+        public string PriceAsString { get { return String.Format("${0:n0}", Price); } }
+        protected Regions Region { get; set; }
+        public string GetRegion { get { return Region.ToString().Replace("_", " "); } }
         public List<Airplane> DockedAirplanes { get; private set; }
         public List<Passenger> AvailablePassengers { get; }
         public List<Cargo> AvailableCargo { get; }
@@ -19,6 +23,15 @@ namespace AirlinesManagerGame.Models
         {
             GetUser = user;
             DockedAirplanes = new List<Airplane>();
+        }
+
+        public enum Regions
+        {
+            North_America,
+            South_America,
+            Europe,
+            Africa,
+            Asia
         }
     }
 }
