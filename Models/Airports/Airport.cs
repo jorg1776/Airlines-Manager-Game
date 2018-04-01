@@ -1,16 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Device.Location;
 
 namespace AirlinesManagerGame.Models
 {
-    public class Airport
+    public class Airport : StoreItem
     {
         public User GetUser { get; private set; }
 
-        public string Name { get; protected set; }
-        public int Price { get; protected set; }
-        public string PriceAsString { get { return String.Format("${0:n0}", Price); } }
         protected Regions Region { get; set; }
         public string GetRegion { get { return Region.ToString().Replace("_", " "); } }
         public List<Airplane> DockedAirplanes { get; private set; }
