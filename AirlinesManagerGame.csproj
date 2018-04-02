@@ -81,6 +81,7 @@
     <Compile Include="Models\CargoType\Cargo.cs" />
     <Compile Include="Models\CargoType\ICargoType.cs" />
     <Compile Include="Models\CargoType\Passenger.cs" />
+    <Compile Include="Models\StoreItem.cs" />
     <Compile Include="Services\FlightManager\FlightManager.cs" />
     <Compile Include="Services\FlightManager\GoogleGeoCodeRequest.cs" />
     <Compile Include="Services\Mediators\AirplanePurchaseMediator.cs" />
@@ -88,6 +89,9 @@
     <Compile Include="Models\Store.cs" />
     <Compile Include="Views\AirplanesStatusView.xaml.cs">
       <DependentUpon>AirplanesStatusView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AirportStore.xaml.cs">
+      <DependentUpon>AirportStore.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\PurchaseVerificationWindow.xaml.cs">
       <DependentUpon>PurchaseVerificationWindow.xaml</DependentUpon>
@@ -101,6 +105,10 @@
     </Compile>
     <Compile Include="ViewModels\StoreViewModel.cs" />
     <Compile Include="Services\WindowService.cs" />
+    <Page Include="Views\AirportStore.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

@@ -9,16 +9,17 @@ namespace AirlinesManagerGame.ViewModels
 {
     public class StoreViewModel : ViewModelBase
     {
-        private User user;
-        private static Store store = new Store();
+        private static User user;
+        private static Store store = new Store(user);
 
         public ObservableCollection<Airplane> AvailableAirplanesList { get { return store.AvailableAirplanes; } }
+        public ObservableCollection<Airport> AirportsList { get { return store.Airports; } }
 
         public RelayCommand GoBackViewCommand { get; private set; }
-        public RelayCommand PurchaseAirplaneCommand { get; private set; }
+        public RelayCommand PurchaseItemCommand { get; private set; }
         private PurchaseVerificationViewModel purchaseVerificationViewModel = new PurchaseVerificationViewModel();
 
-        public Airplane SelectedAirplane { get; set; }
+        public StoreItem SelectedItem { get; set; }
 
         private string _timerDisplay = "Refresh Types in: ";
         public string TimerDisplay
@@ -27,13 +28,13 @@ namespace AirlinesManagerGame.ViewModels
             set { _timerDisplay = value; OnPropertyChanged(nameof(TimerDisplay)); }
         }
 
-        public StoreViewModel(User user)
+        public StoreViewModel(User _user)
         {
-            this.user = user;
+            user = _user;
 
             GoBackViewCommand = new RelayCommand(() => SendSwitchViewMessage("AirplanesStatusView"));
-            PurchaseAirplaneCommand = new RelayCommand(() => VerifyPurchase(SelectedAirplane));
-            purchaseVerificationViewModel.OnDecisionVerified += PurchaseAirplane;
+            PurchaseItemCommand = new RelayCommand(() => VerifyPurchase(SelectedItem));
+            purchaseVerificationViewModel.OnDecisionVerified += PurchaseItem;
             StartTimer();
         }
 
@@ -62,7 +63,7 @@ namespace AirlinesManagerGame.ViewModels
 
         private void RefreshLoadTypes()
         {
-            foreach(Airplane airplane in AvailableAirplanesList)
+            foreach (Airplane airplane in AvailableAirplanesList)
             {
                 airplane.RefreshLoadType();
             }
@@ -75,49 +76,93 @@ namespace AirlinesManagerGame.ViewModels
             private set { _errorText = value; OnPropertyChanged(nameof(ErrorText)); }
         }
 
-        private void VerifyPurchase(Airplane airplaneForPurchase)
+        private void VerifyPurchase(StoreItem itemForPurchase)
         {
-            if(airplaneForPurchase == null)
+            ErrorText = "";
+            if (itemForPurchase == null)
             {
-                ErrorText = "Please select an airplane";
+                ErrorText = "Please select an item";
             }
-            else if (airplaneForPurchase != null && CanUserPurchaseAirplane(airplaneForPurchase))
+            else if (itemForPurchase != null && CanUserPurchaseItem(itemForPurchase))
             {
-                purchaseVerificationViewModel.ValidatePurchase(airplaneForPurchase);
+                purchaseVerificationViewModel.ValidatePurchase(itemForPurchase);
             }
             else
             {
-                ErrorText = DetermineError(airplaneForPurchase);
+                ErrorText = DetermineError(itemForPurchase);
             }
         }
 
-        public bool CanUserPurchaseAirplane(Airplane airplane)
+        public bool CanUserPurchaseItem(StoreItem item)
         {
-            return IsUserHighEnoughLevel(airplane)
-                    && DoesUserHaveEnoughMoney(airplane)
-                    && DoesUserHaveTheCapacity();
+            if (DoesUserHaveEnoughMoney(item))
+            {
+                try
+                {
+                    var itemAsAirplane = (Airplane)item;
+                    return IsUserHighEnoughLevel(itemAsAirplane) && DoesUserHaveTheCapacity();
+                }
+                catch
+                {
+                    Console.WriteLine("Item is an airport");
+                    return true;
+                }
+            }
+            else
+            {
+                return false;
+            }
         }
+
+        private bool DoesUserHaveEnoughMoney(StoreItem item) { return user.Money >= item.Price; }
 
         private bool IsUserHighEnoughLevel(Airplane airplane) { return user.Level >= airplane.LevelToUnlock; }
 
-        private bool DoesUserHaveEnoughMoney(Airplane airplane) { return user.Money >= airplane.Price; }
-
         private bool DoesUserHaveTheCapacity() { return user.AvailableAirplaneSlots > 0; }
 
-        private string DetermineError(Airplane airplaneForPurchase)
+        private string DetermineError(StoreItem itemForPurchase)
         {
-            if(!IsUserHighEnoughLevel(airplaneForPurchase)) { return "Not high enough level"; }
-            else if (!DoesUserHaveEnoughMoney(airplaneForPurchase)) { return "Not enough money"; }
-            else if (!DoesUserHaveTheCapacity()) { return "Insufficient capacity"; }
-            else { return "Error"; }
+            if (!DoesUserHaveEnoughMoney(itemForPurchase)) { return "Not enough money"; }
+            else
+            {
+                try
+                {
+                    var itemAsAirplane = (Airplane)itemForPurchase;
+                    if (!IsUserHighEnoughLevel(itemAsAirplane)) { return "Not high enough level"; }
+                    else if (!DoesUserHaveTheCapacity()) { return "Insufficient capacity"; }
+                }
+                catch
+                {
+                    return "Error";
+                }
+            }
+
+            return "Error";
         }
 
-        private void PurchaseAirplane(object sender, VerificationEventArgs e)
+        private void PurchaseItem(object sender, VerificationEventArgs e)
         {
             if (e.Decision == true)
             {
-                var purchasedAirplane = CreateNewAirplane(e.PurchasedAirplane);
-                AirplanePurchaseMediator.AddAirplane(this, purchasedAirplane);
+                var purchasedItem = e.PurchasedItem;
+
+                try
+                {
+                    var purchasedAirplane = CreateNewAirplane((Airplane)purchasedItem);
+                    AirplanePurchaseMediator.AddAirplane(this, purchasedAirplane);
+                }
+                catch
+                {
+                    try
+                    {
+                        var purchasedAirport = (Airport)purchasedItem;
+                        Console.WriteLine(purchasedAirport.Name);
+                    }
+                    catch
+                    {
+                        Console.WriteLine("Casting Item went wrong");
+                    }
+                }
             }
         }
 
