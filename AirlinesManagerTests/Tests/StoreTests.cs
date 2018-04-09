@@ -14,7 +14,7 @@ namespace AirlinesManagerTests.Tests
         {
             //Arrange
             var user = new User();
-            var storeVM = new StoreViewModel(user);
+            var storeVM = new AirplaneStoreViewModel(user);
 
             //Act
             var availableAirplanes = storeVM.AvailableAirplanesList;

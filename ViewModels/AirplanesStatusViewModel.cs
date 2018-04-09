@@ -11,15 +11,17 @@ namespace AirlinesManagerGame.ViewModels
         private User user;
 
         public RelayCommand LoadPlaneCommand { get; private set; }
-        public RelayCommand GoToStoreViewCommand { get; private set; }
+        public RelayCommand GoToAirplaneStoreViewCommand { get; private set; }
+        public RelayCommand GoToAirportStoreViewCommand { get; private set; }
 
         public AirplanesStatusViewModel(User user)
         {
             this.user = user;
 
             //LoadPlaneCommand = new RelayCommand();
-            GoToStoreViewCommand = new RelayCommand(() => SendSwitchViewMessage("StoreView"));
-            
+            GoToAirplaneStoreViewCommand = new RelayCommand(() => SendSwitchViewMessage("AirplaneStoreView"));
+            GoToAirportStoreViewCommand = new RelayCommand(() => SendSwitchViewMessage("AirportStoreView"));
+
             AirplanePurchaseMediator.OnAirplanePurchased += AddPurchasedAirplane;
         }
 

@@ -2,18 +2,14 @@
 using AirlinesManagerGame.Services.Mediators;
 using GalaSoft.MvvmLight.Command;
 using System;
-using System.Collections.ObjectModel;
 using System.Windows.Threading;
 
 namespace AirlinesManagerGame.ViewModels
 {
     public class StoreViewModel : ViewModelBase
     {
-        private static User user;
-        private static Store store = new Store(user);
-
-        public ObservableCollection<Airplane> AvailableAirplanesList { get { return store.AvailableAirplanes; } }
-        public ObservableCollection<Airport> AirportsList { get { return store.Airports; } }
+        protected static User user;
+        protected static Store store;
 
         public RelayCommand GoBackViewCommand { get; private set; }
         public RelayCommand PurchaseItemCommand { get; private set; }
@@ -31,6 +27,7 @@ namespace AirlinesManagerGame.ViewModels
         public StoreViewModel(User _user)
         {
             user = _user;
+            store = new Store(user);
 
             GoBackViewCommand = new RelayCommand(() => SendSwitchViewMessage("AirplanesStatusView"));
             PurchaseItemCommand = new RelayCommand(() => VerifyPurchase(SelectedItem));
@@ -63,7 +60,7 @@ namespace AirlinesManagerGame.ViewModels
 
         private void RefreshLoadTypes()
         {
-            foreach (Airplane airplane in AvailableAirplanesList)
+            foreach (Airplane airplane in AirplaneStoreViewModel.AvailableAirplanesList)
             {
                 airplane.RefreshLoadType();
             }
@@ -100,7 +97,7 @@ namespace AirlinesManagerGame.ViewModels
                 try
                 {
                     var itemAsAirplane = (Airplane)item;
-                    return IsUserHighEnoughLevel(itemAsAirplane) && DoesUserHaveTheCapacity();
+                    return AirplaneStoreViewModel.IsUserHighEnoughLevel(itemAsAirplane) && AirplaneStoreViewModel.DoesUserHaveTheCapacity();
                 }
                 catch
                 {
@@ -116,10 +113,6 @@ namespace AirlinesManagerGame.ViewModels
 
         private bool DoesUserHaveEnoughMoney(StoreItem item) { return user.Money >= item.Price; }
 
-        private bool IsUserHighEnoughLevel(Airplane airplane) { return user.Level >= airplane.LevelToUnlock; }
-
-        private bool DoesUserHaveTheCapacity() { return user.AvailableAirplaneSlots > 0; }
-
         private string DetermineError(StoreItem itemForPurchase)
         {
             if (!DoesUserHaveEnoughMoney(itemForPurchase)) { return "Not enough money"; }
@@ -128,8 +121,8 @@ namespace AirlinesManagerGame.ViewModels
                 try
                 {
                     var itemAsAirplane = (Airplane)itemForPurchase;
-                    if (!IsUserHighEnoughLevel(itemAsAirplane)) { return "Not high enough level"; }
-                    else if (!DoesUserHaveTheCapacity()) { return "Insufficient capacity"; }
+                    if (!AirplaneStoreViewModel.IsUserHighEnoughLevel(itemAsAirplane)) { return "Not high enough level"; }
+                    else if (!AirplaneStoreViewModel.DoesUserHaveTheCapacity()) { return "Insufficient capacity"; }
                 }
                 catch
                 {
@@ -148,7 +141,7 @@ namespace AirlinesManagerGame.ViewModels
 
                 try
                 {
-                    var purchasedAirplane = CreateNewAirplane((Airplane)purchasedItem);
+                    var purchasedAirplane = AirplaneStoreViewModel.CreateNewAirplane((Airplane)purchasedItem);
                     AirplanePurchaseMediator.AddAirplane(this, purchasedAirplane);
                 }
                 catch
@@ -164,29 +157,6 @@ namespace AirlinesManagerGame.ViewModels
                     }
                 }
             }
-        }
-
-        private Airplane CreateNewAirplane(Airplane airplaneType)
-        {
-            Airplane newAirplane;
-
-            switch (airplaneType.GetType().Name)
-            {
-                case "Bearclaw":
-                    newAirplane = new Bearclaw();
-                    break;
-                case "Griffon":
-                    newAirplane = new Griffon();
-                    break;
-                case "Wallaby":
-                    newAirplane = new Wallaby();
-                    break;
-                default:
-                    throw new Exception();
-            }
-
-            newAirplane.LoadType = airplaneType.LoadType;
-            return newAirplane;
         }
     }
 }

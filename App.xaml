@@ -13,10 +13,13 @@
         <DataTemplate DataType="{x:Type viewmodels:AirplanesStatusViewModel}">
             <views:AirplanesStatusView />
         </DataTemplate>
-        <DataTemplate DataType="{x:Type viewmodels:StoreViewModel}">
-            <views:StoreView />
+        <DataTemplate DataType="{x:Type viewmodels:AirplaneStoreViewModel}">
+            <views:AirplaneStoreView />
         </DataTemplate>
-      
+        <DataTemplate DataType="{x:Type viewmodels:AirportStoreViewModel}">
+            <views:AirportStoreView />
+        </DataTemplate>
+
         <Style x:Key="CenterDataGridHeaderStyle" TargetType="DataGridColumnHeader">
       <Setter Property="HorizontalContentAlignment" Value="Center" />
     </Style>
