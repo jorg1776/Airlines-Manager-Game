@@ -19,7 +19,7 @@
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Name" Binding="{Binding Name}" ElementStyle="{StaticResource CellCenterTextStyle}" Width="*"/>
                 <DataGridTextColumn Header="Class" Binding="{Binding Class}" ElementStyle="{StaticResource CellCenterTextStyle}" Width=".5*"/>
-                <DataGridTextColumn Header="Region" Binding="{Binding Capacity}" ElementStyle="{StaticResource CellCenterTextStyle}" Width="*"/>
+                <DataGridTextColumn Header="Region" Binding="{Binding GetRegion}" ElementStyle="{StaticResource CellCenterTextStyle}" Width="*"/>
                 <DataGridTextColumn Header="Price" Binding="{Binding PriceAsString}" ElementStyle="{StaticResource CellCenterTextStyle}" Width=".9*"/>
             </DataGrid.Columns>
         </DataGrid>
