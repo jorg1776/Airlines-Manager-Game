@@ -151,7 +151,6 @@ namespace AirlinesManagerGame.ViewModels
                         var purchasedAirport = (Airport)purchasedItem;
                         //TODO: Add purchased airport to user's list of owned airports
                         ItemPurchaseMediator.AddAirport(this, purchasedAirport);
-                        Console.WriteLine(purchasedAirport.Name);
                     }
                     catch
                     {
