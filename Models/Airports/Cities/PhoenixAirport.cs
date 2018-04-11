@@ -13,6 +13,7 @@ namespace AirlinesManagerGame.Models.Airports
             Name = "Phoenix Airport";
             Location = new GeoCoordinate(latitude, longitude);
             Region = Regions.North_America;
+            Price = 1000;
         }
     }
 }
