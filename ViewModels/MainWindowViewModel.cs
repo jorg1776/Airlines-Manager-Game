@@ -18,7 +18,7 @@ namespace AirlinesManagerGame.ViewModels
             CurrentViewModel = airplanesStatusViewModel;
             Messenger.Default.Register<string>(this, (viewName) => SetCurrentView(viewName));
 
-            AirplanePurchaseMediator.OnAirplanePurchased += (sender, e) => UsersMoney -= e.PurchasedAirplane.Price;
+            ItemPurchaseMediator.OnItemPurchased += (sender, e) => UsersMoney -= e.PurchasedItem.Price;
         }
 
         public ViewModelBase CurrentViewModel

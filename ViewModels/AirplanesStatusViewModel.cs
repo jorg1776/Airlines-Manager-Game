@@ -22,7 +22,7 @@ namespace AirlinesManagerGame.ViewModels
             GoToAirplaneStoreViewCommand = new RelayCommand(() => SendSwitchViewMessage("AirplaneStoreView"));
             GoToAirportStoreViewCommand = new RelayCommand(() => SendSwitchViewMessage("AirportStoreView"));
 
-            AirplanePurchaseMediator.OnAirplanePurchased += AddPurchasedAirplane;
+            ItemPurchaseMediator.OnAirplanePurchased += AddPurchasedAirplane;
         }
 
         public ObservableCollection<Airplane> AirplanesList { get { return user.OwnedAirplanes; } }
@@ -35,7 +35,7 @@ namespace AirlinesManagerGame.ViewModels
             set { user.AvailableAirplaneSlots = value; }
         }
 
-        public void AddPurchasedAirplane(object sender, AirplanePurchaseMediator.AirplanePurchasedEventArgs e)
+        public void AddPurchasedAirplane(object sender, ItemPurchaseMediator.AirplanePurchasedEventArgs e)
         {
             var purchasedAirplane = e.PurchasedAirplane;
             AirplanesList.Add(purchasedAirplane);

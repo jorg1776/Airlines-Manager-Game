@@ -142,13 +142,15 @@ namespace AirlinesManagerGame.ViewModels
                 try
                 {
                     var purchasedAirplane = AirplaneStoreViewModel.CreateNewAirplane((Airplane)purchasedItem);
-                    AirplanePurchaseMediator.AddAirplane(this, purchasedAirplane);
+                    ItemPurchaseMediator.AddAirplane(this, purchasedAirplane);
                 }
                 catch
                 {
                     try
                     {
                         var purchasedAirport = (Airport)purchasedItem;
+                        //TODO: Add purchased airport to user's list of owned airports
+                        ItemPurchaseMediator.AddAirport(this, purchasedAirport);
                         Console.WriteLine(purchasedAirport.Name);
                     }
                     catch
