@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AirlinesManagerGame", "Airl
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AirlinesManagerTests", "AirlinesManagerTests\AirlinesManagerTests.csproj", "{629BAEA4-A185-4255-AB2C-5CC14D8E78F8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimerDemo", "..\TimerDemo\TimerDemo.csproj", "{4D9D1EF1-92BC-4761-A890-E8F35FDBBD32}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{629BAEA4-A185-4255-AB2C-5CC14D8E78F8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{629BAEA4-A185-4255-AB2C-5CC14D8E78F8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{629BAEA4-A185-4255-AB2C-5CC14D8E78F8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4D9D1EF1-92BC-4761-A890-E8F35FDBBD32}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4D9D1EF1-92BC-4761-A890-E8F35FDBBD32}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4D9D1EF1-92BC-4761-A890-E8F35FDBBD32}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4D9D1EF1-92BC-4761-A890-E8F35FDBBD32}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

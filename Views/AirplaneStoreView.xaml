@@ -1,0 +1,35 @@
+﻿<UserControl x:Class="AirlinesManagerGame.Views.AirplaneStoreView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="500" d:DesignWidth="800">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+        
+        <DataGrid AutoGenerateColumns="False" IsReadOnly="True" ItemsSource="{Binding AvailableAirplanesList}" SelectedItem="{Binding SelectedItem}"  SelectionMode="Single"
+                  ColumnHeaderStyle="{StaticResource CenterDataGridHeaderStyle}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="20,20,20,20" Grid.Column="0">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Name" Binding="{Binding Name}" ElementStyle="{StaticResource CellCenterTextStyle}" Width="*"/>
+                <DataGridTextColumn Header="Class" Binding="{Binding Class}" ElementStyle="{StaticResource CellCenterTextStyle}" Width=".55*"/>
+                <DataGridTextColumn Header="Capacity" Binding="{Binding Capacity}" ElementStyle="{StaticResource CellCenterTextStyle}" Width=".85*"/>
+                <DataGridTextColumn Header="Type" Binding="{Binding LoadTypeAsString}" ElementStyle="{StaticResource CellCenterTextStyle}" Width="*"/>
+                <DataGridTextColumn Header="Range" Binding="{Binding Range}" ElementStyle="{StaticResource CellCenterTextStyle}" Width=".75*"/>
+                <DataGridTextColumn Header="Speed" Binding="{Binding Speed}" ElementStyle="{StaticResource CellCenterTextStyle}" Width=".75*"/>
+                <DataGridTextColumn Header="Weight" Binding="{Binding Weight}" ElementStyle="{StaticResource CellCenterTextStyle}" Width=".75*"/>
+                <DataGridTextColumn Header="Lvl Unlock" Binding="{Binding LevelToUnlock}" ElementStyle="{StaticResource CellCenterTextStyle}" Width=".9*"/>
+                <DataGridTextColumn Header="Price" Binding="{Binding PriceAsString}" ElementStyle="{StaticResource CellCenterTextStyle}" Width="1.1*"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button Command="{Binding GoBackViewCommand}" Content="Back" HorizontalAlignment="Left" Margin="10,70,0,0" VerticalAlignment="Top" Width="75" Grid.Column="1"/>
+        <Button Command="{Binding PurchaseItemCommand}" Content="Purchase" HorizontalAlignment="Left" Margin="10,40,0,0" VerticalAlignment="Top" Width="75" Grid.Column="1"/>
+        <Label Content="{Binding ErrorText}" Margin="0,20,0,10" VerticalAlignment="Top" FontSize="10" Foreground="#FFF60505" Grid.Column="1"/>
+        <Label Content="{Binding TimerDisplay}" Margin="0,0,0,20" VerticalAlignment="Bottom" HorizontalAlignment="Left" Grid.Column="1"/>
+
+    </Grid>
+</UserControl>

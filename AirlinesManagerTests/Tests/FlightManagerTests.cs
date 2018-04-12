@@ -1,9 +1,8 @@
-﻿using System;
-using AirlinesManagerGame;
-using AirlinesManagerGame.Airplanes;
-using AirlinesManagerGame.Airports;
-using AirlinesManagerGame.Airports.Cities;
+﻿using AirlinesManagerGame.Models;
+using AirlinesManagerGame.Models.Airports;
+using AirlinesManagerGame.Sevices;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System.Device.Location;
 
 namespace AirlinesManagerTests
 {
@@ -11,37 +10,22 @@ namespace AirlinesManagerTests
     public class FlightManagerTests
     {
         [TestMethod]
-        public void FlightLandingTest()
+        public void FlyPlaneTest()
         {
             var plane = new Bearclaw();
-            SaltLakeCityAirport.Instance.LandPlane(plane);
+            plane.Location = new SaltLakeCityAirport();
+            var destination = new PhoenixAirport();
 
-            Assert.AreEqual(plane.Location, SaltLakeCityAirport.Instance);
-            Assert.AreEqual(1, SaltLakeCityAirport.Instance.DockedAirplanes.Count);
+            FlightManager.FlyPlane(plane, destination);
+
+            Assert.AreEqual(plane.Location, destination);
         }
 
         [TestMethod]
-        public void FlightSendingTest()
+        public void AirportNameToURLFormatTest()
         {
-            var plane = new Bearclaw();
-            SaltLakeCityAirport.Instance.LandPlane(plane);
-            Assert.AreEqual(1, SaltLakeCityAirport.Instance.DockedAirplanes.Count);
-
-            SaltLakeCityAirport.Instance.SendPlane(plane);
-            Assert.AreEqual(0, SaltLakeCityAirport.Instance.DockedAirplanes.Count);
-        }
-
-        [TestMethod]
-        public void FlyTest()
-        {
-            var plane = new Bearclaw();
-            SaltLakeCityAirport.Instance.LandPlane(plane);
-            Assert.AreEqual(1, SaltLakeCityAirport.Instance.DockedAirplanes.Count);
-
-            FlightManager.FlyPlane(plane, PhoenixAirport.Instance);
-            Assert.AreEqual(0, SaltLakeCityAirport.Instance.DockedAirplanes.Count);
-            Assert.AreEqual(1, PhoenixAirport.Instance.DockedAirplanes.Count);
-            Assert.AreEqual(plane.Location, PhoenixAirport.Instance);
+            var airportName = new SaltLakeCityAirport().Name;
+            Assert.AreEqual("Salt+Lake+City+Airport", airportName.Replace(' ', '+'));
         }
     }
 }

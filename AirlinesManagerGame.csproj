@@ -34,22 +34,27 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="GalaSoft.MvvmLight, Version=5.3.0.19026, Culture=neutral, PublicKeyToken=e7570ab207bcb616, processorArchitecture=MSIL">
-      <HintPath>packages\MvvmLightLibs.5.3.0.0\lib\net45\GalaSoft.MvvmLight.dll</HintPath>
+    <Reference Include="CommonServiceLocator, Version=2.0.2.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
+      <HintPath>packages\CommonServiceLocator.2.0.2\lib\net45\CommonServiceLocator.dll</HintPath>
     </Reference>
-    <Reference Include="GalaSoft.MvvmLight.Extras, Version=5.3.0.19032, Culture=neutral, PublicKeyToken=669f0b5e8f868abf, processorArchitecture=MSIL">
-      <HintPath>packages\MvvmLightLibs.5.3.0.0\lib\net45\GalaSoft.MvvmLight.Extras.dll</HintPath>
+    <Reference Include="GalaSoft.MvvmLight, Version=5.4.1.0, Culture=neutral, PublicKeyToken=e7570ab207bcb616, processorArchitecture=MSIL">
+      <HintPath>packages\MvvmLightLibs.5.4.1\lib\net45\GalaSoft.MvvmLight.dll</HintPath>
     </Reference>
-    <Reference Include="GalaSoft.MvvmLight.Platform, Version=5.3.0.19032, Culture=neutral, PublicKeyToken=5f873c45e98af8a1, processorArchitecture=MSIL">
-      <HintPath>packages\MvvmLightLibs.5.3.0.0\lib\net45\GalaSoft.MvvmLight.Platform.dll</HintPath>
+    <Reference Include="GalaSoft.MvvmLight.Extras, Version=5.4.1.0, Culture=neutral, PublicKeyToken=669f0b5e8f868abf, processorArchitecture=MSIL">
+      <HintPath>packages\MvvmLightLibs.5.4.1\lib\net45\GalaSoft.MvvmLight.Extras.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Practices.ServiceLocation, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>packages\CommonServiceLocator.1.3\lib\portable-net4+sl5+netcore45+wpa81+wp8\Microsoft.Practices.ServiceLocation.dll</HintPath>
+    <Reference Include="GalaSoft.MvvmLight.Platform, Version=5.4.1.0, Culture=neutral, PublicKeyToken=5f873c45e98af8a1, processorArchitecture=MSIL">
+      <HintPath>packages\MvvmLightLibs.5.4.1\lib\net45\GalaSoft.MvvmLight.Platform.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>packages\Newtonsoft.Json.11.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Device" />
     <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>packages\MvvmLightLibs.5.3.0.0\lib\net45\System.Windows.Interactivity.dll</HintPath>
+      <HintPath>packages\MvvmLightLibs.5.4.1\lib\net45\System.Windows.Interactivity.dll</HintPath>
     </Reference>
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
@@ -69,41 +74,50 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Airports\Airport.cs" />
-    <Compile Include="Airports\Cities\PhoenixAirport.cs" />
-    <Compile Include="Airports\Cities\SaltLakeCityAirport.cs" />
-    <Compile Include="CargoType\Cargo.cs" />
-    <Compile Include="CargoType\Passenger.cs" />
-    <Compile Include="FlightManager.cs" />
-    <Compile Include="User.cs" />
-    <Compile Include="Store\Store.cs" />
+    <Compile Include="Models\Airplanes\AirplaneTypes\Griffon.cs" />
+    <Compile Include="Models\Airports\Airport.cs" />
+    <Compile Include="Models\Airports\Cities\PhoenixAirport.cs" />
+    <Compile Include="Models\Airports\Cities\SaltLakeCityAirport.cs" />
+    <Compile Include="Models\CargoType\Cargo.cs" />
+    <Compile Include="Models\CargoType\ICargoType.cs" />
+    <Compile Include="Models\CargoType\Passenger.cs" />
+    <Compile Include="Models\StoreItem.cs" />
+    <Compile Include="Services\FlightManager\FlightManager.cs" />
+    <Compile Include="Services\FlightManager\GoogleGeoCodeRequest.cs" />
+    <Compile Include="Services\Mediators\ItemPurchaseMediator.cs" />
+    <Compile Include="Models\User.cs" />
+    <Compile Include="Models\Store.cs" />
+    <Compile Include="ViewModels\StoreViewModels\AirplaneStoreViewModel.cs" />
+    <Compile Include="ViewModels\StoreViewModels\AirportStoreViewModel.cs" />
     <Compile Include="Views\AirplanesStatusView.xaml.cs">
       <DependentUpon>AirplanesStatusView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\MapView.xaml.cs">
-      <DependentUpon>MapView.xaml</DependentUpon>
+    <Compile Include="Views\AirportStoreView.xaml.cs">
+      <DependentUpon>AirportStoreView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\ViewModels\MapViewModel.cs" />
-    <Compile Include="Views\WorldMap\ZoomBorder.cs" />
     <Compile Include="Views\PurchaseVerificationWindow.xaml.cs">
       <DependentUpon>PurchaseVerificationWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\ViewModels\AirplanesStatusViewModel.cs" />
-    <Compile Include="Views\ViewModels\PurchaseVerificationViewModel.cs" />
-    <Compile Include="Views\ViewModels\ViewModelBase.cs" />
-    <Compile Include="Views\ViewModels\MainWindowViewModel.cs" />
-    <Compile Include="Views\StoreView.xaml.cs">
-      <DependentUpon>StoreView.xaml</DependentUpon>
+    <Compile Include="ViewModels\AirplanesStatusViewModel.cs" />
+    <Compile Include="ViewModels\PurchaseVerificationViewModel.cs" />
+    <Compile Include="ViewModels\ViewModelBase.cs" />
+    <Compile Include="ViewModels\MainWindowViewModel.cs" />
+    <Compile Include="Views\AirplaneStoreView.xaml.cs">
+      <DependentUpon>AirplaneStoreView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\ViewModels\StoreViewModel.cs" />
-    <Compile Include="Views\WindowService\WindowService.cs" />
+    <Compile Include="ViewModels\StoreViewModels\StoreViewModel.cs" />
+    <Compile Include="Services\WindowService.cs" />
+    <Page Include="Views\AirportStoreView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Compile Include="Airplanes\Airplane.cs" />
-    <Compile Include="Airplanes\AirplaneTypes\Bearclaw.cs" />
-    <Compile Include="Airplanes\AirplaneTypes\Wallaby.cs" />
+    <Compile Include="Models\Airplanes\Airplane.cs" />
+    <Compile Include="Models\Airplanes\AirplaneTypes\Bearclaw.cs" />
+    <Compile Include="Models\Airplanes\AirplaneTypes\Wallaby.cs" />
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -116,15 +130,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\MapView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Views\PurchaseVerificationWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\StoreView.xaml">
+    <Page Include="Views\AirplaneStoreView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -147,7 +157,10 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <None Include="packages.config" />
+    <None Include="APIKeys.config" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -156,11 +169,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Views\WorldMap\WorldMap.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Views\WorldMap\WorldMap.jpeg" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
