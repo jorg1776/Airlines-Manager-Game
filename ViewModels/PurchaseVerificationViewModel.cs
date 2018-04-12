@@ -1,7 +1,7 @@
-﻿using System;
-using AirlinesManagerGame.Models;
+﻿using AirlinesManagerGame.Models;
 using AirlinesManagerGame.Services;
 using GalaSoft.MvvmLight.Command;
+using System;
 
 namespace AirlinesManagerGame.ViewModels
 {
@@ -12,17 +12,17 @@ namespace AirlinesManagerGame.ViewModels
         public RelayCommand AcceptPurchaseCommand { get; private set; }
         public RelayCommand DeclinePurchaseCommand { get; private set; }
 
-        private Airplane airplaneForPurchase;
+        private StoreItem itemForPurchase;
 
         public PurchaseVerificationViewModel()
         {
-            AcceptPurchaseCommand = new RelayCommand(() => 
+            AcceptPurchaseCommand = new RelayCommand(() =>
             {
-                OnDecisionVerified(this, new VerificationEventArgs(airplaneForPurchase, true));
+                OnDecisionVerified(this, new VerificationEventArgs(itemForPurchase, true));
                 windowService.CloseWindow();
             });
 
-            DeclinePurchaseCommand = new RelayCommand(() => windowService.CloseWindow() );
+            DeclinePurchaseCommand = new RelayCommand(() => windowService.CloseWindow());
         }
 
         private string _verificationQuestion = "Question";
@@ -39,17 +39,17 @@ namespace AirlinesManagerGame.ViewModels
             }
         }
 
-        private void SetVerificationQuestion(Airplane airplane)
+        private void SetVerificationQuestion(StoreItem item)
         {
-            VerificationQuestion = String.Format("Would you like to purchase {0} for {1}?", airplane.Name, airplane.PriceAsString);
+            VerificationQuestion = String.Format("Would you like to purchase {0} for {1}?", item.Name, item.PriceAsString);
         }
 
-        public void ValidatePurchase(Airplane selectedAirplane)
+        public void ValidatePurchase(StoreItem selectedItem)
         {
             if (windowService.CanDisplayWindow)
             {
-                SetVerificationQuestion(selectedAirplane);
-                airplaneForPurchase = selectedAirplane;
+                SetVerificationQuestion(selectedItem);
+                itemForPurchase = selectedItem;
                 windowService.ShowPurchaseVerificationWindow(this);
             }
         }
@@ -61,13 +61,13 @@ namespace AirlinesManagerGame.ViewModels
     public class VerificationEventArgs : EventArgs
     {
 
-        public VerificationEventArgs(Airplane airplane, bool decision)
+        public VerificationEventArgs(StoreItem item, bool decision)
         {
-            PurchasedAirplane = airplane;
+            PurchasedItem = item;
             Decision = decision;
         }
 
         public bool Decision { get; private set; }
-        public Airplane PurchasedAirplane { get; private set; }
+        public StoreItem PurchasedItem { get; private set; }
     }
 }

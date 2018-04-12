@@ -5,9 +5,9 @@ namespace AirlinesManagerGame.Views
     /// <summary>
     /// Interaction logic for StoreWindow.xaml
     /// </summary>
-    public partial class StoreView : UserControl
+    public partial class AirplaneStoreView : UserControl
     {
-        public StoreView()
+        public AirplaneStoreView()
         {
             InitializeComponent();
         }

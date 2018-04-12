@@ -4,11 +4,8 @@ using System.Collections.Generic;
 
 namespace AirlinesManagerGame.Models
 {
-    public abstract class Airplane : ViewModelBase
+    public abstract class Airplane : StoreItem
     {
-        public string Name { get; protected set; }
-        public int Price { get; protected set; }
-        public string PriceAsString { get { return String.Format("${0:n0}", Price); } }
         public int LevelToUnlock { get; protected set; }
         public int Class { get; protected set; }
         public int Range { get; protected set; }
@@ -16,6 +13,7 @@ namespace AirlinesManagerGame.Models
         public double Weight { get; protected set; }
         public int Capacity { get; protected set; }
 
+        private static ViewModelBase viewModelBase = new ViewModelBase();
         private LoadTypes _loadTypes;
         public LoadTypes LoadType
         {
@@ -25,7 +23,7 @@ namespace AirlinesManagerGame.Models
         public string LoadTypeAsString
         {
             get { return LoadType.ToString(); }
-            set { OnPropertyChanged(nameof(LoadTypeAsString)); }
+            set { viewModelBase.OnPropertyChanged(nameof(LoadTypeAsString)); }
         }
 
         public int CargoCapacity { get; protected set; }

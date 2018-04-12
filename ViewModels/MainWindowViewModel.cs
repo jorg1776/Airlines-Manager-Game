@@ -1,6 +1,6 @@
 ﻿using AirlinesManagerGame.Models;
-using GalaSoft.MvvmLight.Messaging;
 using AirlinesManagerGame.Services.Mediators;
+using GalaSoft.MvvmLight.Messaging;
 
 namespace AirlinesManagerGame.ViewModels
 {
@@ -10,14 +10,15 @@ namespace AirlinesManagerGame.ViewModels
 
         private ViewModelBase _currentViewModel;
         private static readonly AirplanesStatusViewModel airplanesStatusViewModel = new AirplanesStatusViewModel(user);
-        private static readonly StoreViewModel storeViewModel = new StoreViewModel(user);
+        private static readonly AirplaneStoreViewModel airplaneStoreViewModel = new AirplaneStoreViewModel(user);
+        private static readonly AirportStoreViewModel airportStoreViewModel = new AirportStoreViewModel(user);
 
         public MainWindowViewModel()
         {
             CurrentViewModel = airplanesStatusViewModel;
             Messenger.Default.Register<string>(this, (viewName) => SetCurrentView(viewName));
 
-            AirplanePurchaseMediator.OnAirplanePurchased += (sender, e) => UsersMoney-= e.PurchasedAirplane.Price;
+            ItemPurchaseMediator.OnItemPurchased += (sender, e) => UsersMoney -= e.PurchasedItem.Price;
         }
 
         public ViewModelBase CurrentViewModel
@@ -40,7 +41,7 @@ namespace AirlinesManagerGame.ViewModels
             set { user.Money = value; OnPropertyChanged(nameof(UsersMoneyAsString)); }
         }
 
-        public string UsersLevelString {  get { return string.Format("Level {0}", UsersLevel); } }
+        public string UsersLevelString { get { return string.Format("Level {0}", UsersLevel); } }
         public int UsersLevel
         {
             get { return user.Level; }
@@ -49,13 +50,16 @@ namespace AirlinesManagerGame.ViewModels
 
         private void SetCurrentView(string viewName)
         {
-            switch(viewName)
+            switch (viewName)
             {
                 case "AirplanesStatusView":
                     CurrentViewModel = airplanesStatusViewModel;
                     break;
-                case "StoreView":
-                    CurrentViewModel = storeViewModel;
+                case "AirplaneStoreView":
+                    CurrentViewModel = airplaneStoreViewModel;
+                    break;
+                case "AirportStoreView":
+                    CurrentViewModel = airportStoreViewModel;
                     break;
             }
         }

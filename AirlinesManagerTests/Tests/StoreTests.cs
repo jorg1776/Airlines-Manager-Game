@@ -14,7 +14,7 @@ namespace AirlinesManagerTests.Tests
         {
             //Arrange
             var user = new User();
-            var storeVM = new StoreViewModel(user);
+            var storeVM = new AirplaneStoreViewModel(user);
 
             //Act
             var availableAirplanes = storeVM.AvailableAirplanesList;
@@ -42,12 +42,12 @@ namespace AirlinesManagerTests.Tests
         {
             //Arrange
             var user = new User();
-            var mediator = new AirplanePurchaseMediator();
+            var mediator = new ItemPurchaseMediator();
             var airplanesStatusVM = new AirplanesStatusViewModel(user);
             var airplane = new Bearclaw();
 
             //Act
-            AirplanePurchaseMediator.AddAirplane(this,airplane);
+            ItemPurchaseMediator.AddAirplane(this,airplane);
 
             //Assert
             Assert.IsTrue(airplanesStatusVM.AirplanesList.Contains(airplane));
@@ -58,13 +58,13 @@ namespace AirlinesManagerTests.Tests
         {
             //Arrange
             var user = new User();
-            var mediator = new AirplanePurchaseMediator();
+            var mediator = new ItemPurchaseMediator();
             var airplanesStatusVM = new AirplanesStatusViewModel(user);
             var airplane = new Bearclaw();
             var usersAvailablePlainSlotsBefore = airplanesStatusVM.UsersAvailableAirplaneSlots;
 
             //Act
-            AirplanePurchaseMediator.AddAirplane(this, airplane);
+            ItemPurchaseMediator.AddAirplane(this, airplane);
             var usersAvailablePlainSlotsAfter = airplanesStatusVM.UsersAvailableAirplaneSlots;
 
             //Assert

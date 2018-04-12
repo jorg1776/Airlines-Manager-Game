@@ -81,13 +81,19 @@
     <Compile Include="Models\CargoType\Cargo.cs" />
     <Compile Include="Models\CargoType\ICargoType.cs" />
     <Compile Include="Models\CargoType\Passenger.cs" />
+    <Compile Include="Models\StoreItem.cs" />
     <Compile Include="Services\FlightManager\FlightManager.cs" />
     <Compile Include="Services\FlightManager\GoogleGeoCodeRequest.cs" />
-    <Compile Include="Services\Mediators\AirplanePurchaseMediator.cs" />
+    <Compile Include="Services\Mediators\ItemPurchaseMediator.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Models\Store.cs" />
+    <Compile Include="ViewModels\StoreViewModels\AirplaneStoreViewModel.cs" />
+    <Compile Include="ViewModels\StoreViewModels\AirportStoreViewModel.cs" />
     <Compile Include="Views\AirplanesStatusView.xaml.cs">
       <DependentUpon>AirplanesStatusView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AirportStoreView.xaml.cs">
+      <DependentUpon>AirportStoreView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\PurchaseVerificationWindow.xaml.cs">
       <DependentUpon>PurchaseVerificationWindow.xaml</DependentUpon>
@@ -96,11 +102,15 @@
     <Compile Include="ViewModels\PurchaseVerificationViewModel.cs" />
     <Compile Include="ViewModels\ViewModelBase.cs" />
     <Compile Include="ViewModels\MainWindowViewModel.cs" />
-    <Compile Include="Views\StoreView.xaml.cs">
-      <DependentUpon>StoreView.xaml</DependentUpon>
+    <Compile Include="Views\AirplaneStoreView.xaml.cs">
+      <DependentUpon>AirplaneStoreView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ViewModels\StoreViewModel.cs" />
+    <Compile Include="ViewModels\StoreViewModels\StoreViewModel.cs" />
     <Compile Include="Services\WindowService.cs" />
+    <Page Include="Views\AirportStoreView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -124,7 +134,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\StoreView.xaml">
+    <Page Include="Views\AirplaneStoreView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
